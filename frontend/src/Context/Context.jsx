@@ -2,12 +2,14 @@ import React, { createContext, useState } from 'react';
 export const DataContext = createContext();
 
 const getSellerDetails = () => {
-    if(localStorage.getItem('seller')) {
+    if (
+        localStorage.getItem('seller') &&
+        localStorage.getItem('seller') !== 'undefined'
+    ) {
         return JSON.parse(localStorage.getItem('seller'));
     }
-
-    return []
-}
+    return [];
+};
 
 function Context({ children }) {
     const [state, setstate] = useState([]);
