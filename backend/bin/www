@@ -7,13 +7,19 @@
 var app = require('../app');
 var debug = require('debug')('shopping-cart-nodejs:server');
 var http = require('http');
+require('dotenv').config();
+
 
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '8008');
-app.set('port', port);
+// var port = normalizePort(process.env.PORT || '8008');
+var port =app.listen(process.env.PORT || '8008',()=>{
+  console.log("connected succesfully");
+})
+
+// app.set('port', port);
 
 /**
  * Create HTTP server.
