@@ -4,6 +4,7 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 import { DataContext } from "../../../Context/Context";
+import './ProductView.css'
 
 function Productview() {
   const { State, AdminTrue, Users, Cartcount } = useContext(DataContext);
@@ -33,7 +34,7 @@ function Productview() {
           return <CardS setres={setres} i={i} />;
         })}
       </div>
-    </div>
+      </div>
   );
 }
 

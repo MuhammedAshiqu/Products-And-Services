@@ -37,7 +37,7 @@ function ManageProduct() {
       
 
       {/* try */}
-      <table class="styled-table">
+      <table className="styled-table">
         <thead>
           <tr>
             <th>Index</th>

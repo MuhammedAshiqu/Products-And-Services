@@ -90,15 +90,8 @@ function Chat() {
               src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/chat_avatar_01.jpg"
               alt
             />
-            <div>
-              <h2>Chat </h2>
-              <h3>already 1902 messages</h3>
-            </div>
-            <img
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1940306/ico_star.png"
-              alt
-            />
-          </header>
+            <h2></h2>
+             </header>
           <ul id="chat">
             {
               ab.map((i) => {
@@ -106,15 +99,15 @@ function Chat() {
                   return (
                     <li className="you">
                       <div className="entete">
-                        <span className="status green" />
-                        <h2>{i.sender}</h2>
+                        {/* <span className="status green" /> */}
                       </div>
-                      <div className="triangle" />
+                      {/* <div className="triangle" /> */}
                       <div className="message">
 
                         {i.text}
 
-                      </div>
+                      </div><br/>
+                        <h2>{i.sender}</h2>
 
                     </li>
                   )
@@ -124,14 +117,14 @@ function Chat() {
                     
                     <li className="me">
                       <div className="entete">
-                        <h2>{i.sender}</h2>
-                        <span className="status blue" />
+                        {/* <span className="status blue" /> */}
                       </div>
-                      <div className="triangle" />
+                      {/* <div className="triangle" /> */}
                       <div className="message">
                         {
                           i.text}
-                      </div>
+                      </div><br/>
+                          <h2>{i.sender}</h2>
                     </li>
                   )
                 }

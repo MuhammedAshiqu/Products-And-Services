@@ -46,20 +46,22 @@ function Change() {
   return (
     <div className="main-i">
       <>
-        <Table striped bordered hover variant="dark">
+      <table className="styled-table">
           <thead>
             <tr>
+              <th>S.no</th>
               <th>Name</th>
-              <th>Price</th>
+              <th>Phone</th>
               <th>Uploaded</th>
               <th>Delete</th>
             </tr>
           </thead>
           <tbody>
-            {items.map((i) => (
+            {items.map((i,key) => (
               <tr>
+                <td>{key+1}</td>
                 <td>{i?.Name}</td>
-                <td>{i?.Price}</td>
+                <td>{i?.Phone}</td>
                 <td>{i?.CreatedBy}</td>
                 <td>
                   <button
@@ -72,14 +74,43 @@ function Change() {
               </tr>
             ))}
           </tbody>
-        </Table>
-        <div className="dlt-btn">
-          <button className="btn btn-danger" onClick={deleteAllItem}>
-            Delete All
-          </button>
-        </div>
+        </table>
       </>
       :<div className="no-item mt-4"></div>
+
+
+      
+      {/* <div>
+    <table className="styled-table">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Name</th>
+            <th>mail id</th>
+            <th>Option</th>
+          </tr>
+        </thead>
+        <tbody>
+          {getsellerdetails.map((i, index) => (
+            <tr>
+              <td>{index + 1}</td>
+              <td>{i.Name}</td>
+              <td>{i.Email}</td>
+
+              <td>
+                <button
+                  onClick={() => deleteItem(i._id)}
+                  className="btn btn-danger"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      {/* try */}
+    {/* </div>  */}
     </div>
   );
 }

@@ -72,14 +72,13 @@ function App() {
         {/* {!sellerTrue ? <Navbar1></Navbar1> : <SellerH/> } */}
         {/* <Navbar2></Navbar2> */}
 
-        <Route path="/admin" component={Admin} />
-        <Route path="/adminhome" component={Change} />
-        <Route path="/getallusers" component={Showallusers} />
-        <Route path="/getallsellers" component={Showallsellers} />
-        <Route path="/allorders" component={Allorders} />
-        {/* <Route path='/admins' component={AdminHome} /> */}
-        <Route path="/service" component={NewService}></Route>
-        <Route path="/getallshops" component={ShopView}></Route>
+        <Route path="/admin" component={Admin} exact />
+        <Route path="/admin-products" component={Change} />
+        <Route path="/admin-allusers" component={Showallusers} />
+        <Route path="/admin-allsellers" component={Showallsellers} />
+        <Route path="/admin-allorders" component={Allorders} />
+        <Route path="/admin-addservice" component={NewService}></Route>
+        <Route path="/admin-allshops" component={ShopView}></Route>
 
         {/* Users Section */}
         <Route exact path="/">
@@ -99,13 +98,11 @@ function App() {
         <Route path="/seller-products/:email" component={SellerProducts} />
         <Route path="/messages" component={ChatTable} />
         <Route path="/seller-messages1" component={ChatTable1} />
-
-        <Route path="/manageproduct" component={ManageProduct} />
-        <Route path="/editproduct/:id" component={NewAdd1} />
-        <Route path="/add-product" component={NewAdd} />
         <Route path="/shopview" component={ShopView}/>
+        {/* <Route path="/manageproduct" component={ManageProduct} /> */}
+        {/* <Route path="/editproduct/:id" component={NewAdd1} /> */}
+        {/* <Route path="/add-product" component={NewAdd} /> */}
 
-        {/* <Route path='/*' component={Cart} /> */}
 
         {/* seller Section */}
         <Route path="/seller-signup" component={SlrSignup} />

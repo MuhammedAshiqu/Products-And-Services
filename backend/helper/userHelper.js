@@ -91,6 +91,31 @@ module.exports = {
     });
   },
 
+
+  addProduct: (product, user, callback) => {
+    return new Promise((resolve, reject) => {
+      // console.log("my",user);
+      // console.log(product);
+      product.input.price = parseInt(product.input.price);
+      const products = {
+        Name: product.input.name,
+        Category: product.input.category,
+        Price: product.input.price,
+        Description: product.input.description,
+        url: product.url,
+        CreatedBy: user.Email,
+        reviews: [],
+      };
+
+      db.get()
+        .collection(collections.PRODUCTS_COLLECTION)
+        .insertOne(products)
+        .then((data) => {
+          // console.log(data);
+          resolve(data.ops[0]._id);
+        });
+    });
+  },
   addToCart: (productId, userId, Name, image) => {
     console.log(userId);
     let productObject = {
@@ -148,31 +173,6 @@ module.exports = {
       }
     });
   },
-  addProduct: (product, user, callback) => {
-    return new Promise((resolve, reject) => {
-      // console.log("my",user);
-      // console.log(product);
-      product.input.price = parseInt(product.input.price);
-      const products = {
-        Name: product.input.name,
-        Category: product.input.category,
-        Price: product.input.price,
-        Description: product.input.description,
-        url: product.url,
-        CreatedBy: user.Email,
-        reviews: [],
-      };
-
-      db.get()
-        .collection(collections.PRODUCTS_COLLECTION)
-        .insertOne(products)
-        .then((data) => {
-          // console.log(data);
-          resolve(data.ops[0]._id);
-        });
-    });
-  },
-
   getCartProducts: (userId) => {
     return new Promise(async (resolve, reject) => {
       let cartItems = await db
@@ -188,6 +188,7 @@ module.exports = {
           {
             $project: {
               item: "$products.item",
+              name:"$products.name",
               quantity: "$products.quantity",
             },
           },
@@ -201,7 +202,8 @@ module.exports = {
           },
           {
             $project: {
-              item: 1,
+              item:1 ,
+              // name:,
               quantity: 1,
               product: { $arrayElemAt: ["$product", 0] },
             },

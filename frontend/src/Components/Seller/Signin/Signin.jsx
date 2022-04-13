@@ -121,7 +121,7 @@ function Signin() {
 
 
     // try
-    <div className='body'> <div class="container">
+    <div className='body'> <div className="container">
       <h1 >Signin</h1>
       <form  >
         {error ? <h2 style={{ color: 'red' }}>{error}</h2> : ''}

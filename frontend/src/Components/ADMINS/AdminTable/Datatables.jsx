@@ -33,7 +33,6 @@ function Datatable({items}) {
     console.log('items are',spreaderd);
   return (
     <div className="App">
-      {/* <h3>DataTable in React - <a href="https://www.cluemediator.com" target="_blank">Clue Mediator</a></h3> */}
       <DataTable
         title="ALL PRODUCTS"
         columns={columns}

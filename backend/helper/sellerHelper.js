@@ -65,8 +65,8 @@ module.exports = {
       const shops = {
         Name: shop.input.name,
         Category: shop.input.category,
-        Price: shop.input.price,
-        Description: shop.input.description,
+        Phone: shop.input.phone,
+        Location: shop.input.location,
         url: shop.url,
         CreatedBy: seller?.Email,
         SellerId: seller?._id,

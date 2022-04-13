@@ -28,7 +28,12 @@ router.get("/all-shops",  function (req, res) {
    res.json( { admin: true, administator, shops });
   });
 });
-
+router.get("/remove-shop/:id", function (req, res) {
+  let userId = req.params.id;
+  adminHelper.removeShop(userId).then(() => {
+    res.json({message:'shop deleted'});
+  });
+});
 router.get("/all-products", verifySignedIn, function (req, res) {
   let administator = req.session.admin;
   adminHelper.getAllProducts().then((products) => {

@@ -25,12 +25,12 @@ function NewService() {
       .then((result) => {
         console.log(result);
         alert("added");
-        history.push("/adminhome");
+        history.push("/admin-products");
       });
   };
   const handleClose = () => {
     setShow(false);
-    history.push("/adminhome");
+    history.push("/admin-products");
   };
   const handleShow = () => setShow(true);
   useEffect(() => {

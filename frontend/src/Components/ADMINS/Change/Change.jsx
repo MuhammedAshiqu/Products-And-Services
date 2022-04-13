@@ -73,11 +73,7 @@ function Change() {
           </tbody>
         </Table>
 
-        <div className="dlt-btn">
-          <button className="btn btn-danger" onClick={deleteAllItem}>
-            Delete All
-          </button>
-        </div>
+      
       </>
       :<div className="no-item mt-4"></div> */}
       {/* try */}

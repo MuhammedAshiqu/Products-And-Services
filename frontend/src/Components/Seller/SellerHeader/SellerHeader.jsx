@@ -85,7 +85,7 @@ function SellerHeader() {
               </li>
             </ul>
           </div>
-          <div class="login">
+          <div className="login">
             <ul>
 
 
@@ -98,7 +98,7 @@ function SellerHeader() {
           </div>
           <input type="checkbox" name="" id="hamburger" />
 
-          <div class="toogle">
+          <div className="toogle">
             <label for="hamburger">
               <span></span>
             </label>

@@ -38,7 +38,7 @@ function CardS({ i, setres }) {
   }, [isLoaged]);
 
   return (
-    <div className="card-item">
+    <div className="card-container">
       <Link to={`/productd/${i._id}`}>
         <ToastContainer
           position="top-center"
@@ -76,42 +76,7 @@ function CardS({ i, setres }) {
 
 
     // try
-//     <div>
-//       <div class="container">
-//   <div class="card">
-//   <Link to={`/productd/${i._id}`}>
-//     <div class="card-body">
-//           <img src={i.url} alt="sample71" />
 
-//       <div class="row">
-//         <div class="card-title">
-//           <h4>{i.Name}r</h4>
-//           <h3>&#8377; {i.Price}</h3>
-//         </div>
-//         <div class="view-btn">
-//           <a href="">{isLoaged &&
-//              <>
-//                <Link to={`/chat/${i.CreatedBy}`}> <button style={{color:black}} >chat</button></Link>
-//              </>
-//            }</a>
-//         </div>
-//       </div>
-//       <hr />
-//       <p>
-//       upload :{i.CreatedBy}
-//       </p>
-//       <div class="btn-group">
-//         <div class="btn">
-//          <button onClick={() => addItem(i._id)}>Add to Cart</button>
-          
-//         </div>
-//         <a href=""> Cancel</a>
-//       </div>
-//     </div>
-//     </Link>
-//   </div>
-// </div>
-//     </div>
   );
 }
 

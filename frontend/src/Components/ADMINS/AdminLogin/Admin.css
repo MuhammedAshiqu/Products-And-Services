@@ -45,7 +45,7 @@
 
 .login-box {
     align-items: center;
-    margin-top: 75px;
+    margin-top: 1em;
     height: auto;
     background: #1A2226;
     text-align: center;
@@ -152,17 +152,24 @@ label {
 }
 
 .login-button {
-    padding-right: 0px;
+    padding-right: 8px;
     text-align: right;
     margin-bottom: 25px;
+    margin-left: 15em;
 }
 
 .login-text {
     text-align: left;
     padding-left: 0px;
+    margin-left: 2px;
     color: #A2A4A4;
 }
 
 .loginbttm {
-    padding: 0px;
+    padding: 5px;
+}
+.admin_container{
+    width: 38em;
+    margin-left: 22em;
+    margin-bottom: 2em;
 }

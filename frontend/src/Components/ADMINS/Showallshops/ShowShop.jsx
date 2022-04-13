@@ -26,23 +26,22 @@ function ShowShops() {
     getAllShops();
   }, [ref]);
   return (
-    <div className="main-i">
-      {/* try */}
-      <table class="styled-table">
+<div>
+    <table className="styled-table">
         <thead>
           <tr>
             <th>No.</th>
             <th>Name</th>
-            <th>Seller Id</th>
+            <th>mail id</th>
             <th>Option</th>
           </tr>
         </thead>
         <tbody>
-          {allshops.map((i, index) => (
+          {allsellers.map((i, index) => (
             <tr>
               <td>{index + 1}</td>
               <td>{i.Name}</td>
-              <td>{i.SellerId}</td>
+              <td>{i.Email}</td>
 
               <td>
                 <button

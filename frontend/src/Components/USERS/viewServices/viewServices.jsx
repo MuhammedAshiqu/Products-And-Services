@@ -33,9 +33,9 @@ function ViewService() {
             </tr>
           </thead>
           <tbody>
-            {data.map((i,index) => (
+            {data.map((i,key) => (
               <tr>
-                <td>{index+1}</td>
+                <td>{key+1}</td>
                 <td>{i.name}</td>
                 <td>{i.email}</td>
                 <td>{i.item}</td>

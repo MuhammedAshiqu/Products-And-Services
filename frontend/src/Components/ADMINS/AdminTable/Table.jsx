@@ -72,7 +72,7 @@ const Tabl = ({ items }) => {
 
     return (
         <>
-            <div class="search">
+            <div className="search">
                 <input
                     placeholder="Search Campaign"
                     value={value}
@@ -83,9 +83,9 @@ const Tabl = ({ items }) => {
                 <thead>
                     <tr>{headRow()}</tr>
                     {
-                        items.map((i,index) => (
+                        items.map((i,key) => (
                             <tr>
-                                <td>{index+1}</td>
+                                <td>{key+1}</td>
                                 <td>{i.Name}</td>
                                 <td>{i.Price}</td>
                                 <td>{i.CreatedBy}</td>

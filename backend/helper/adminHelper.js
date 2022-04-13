@@ -16,18 +16,6 @@ module.exports = {
       });
   },
 
-  getAllShops: () => {
-    return new Promise(async (resolve, reject) => {
-      console.log("all shops");
-      let shops = await db
-        .get()
-        .collection(collections.SHOPS_COLLECTION)
-        .find()
-        .toArray();
-      resolve(shops);
-    });
-  },
-
   getAllProducts: () => {
     return new Promise(async (resolve, reject) => {
       let products = await db
@@ -183,12 +171,11 @@ module.exports = {
       resolve(sellers);
     });
   },
-
-  removeSeller: (sellerId) => {
+  removeSeller: (userId) => {
     return new Promise((resolve, reject) => {
       db.get()
         .collection(collections.SELLERS_COLLECTION)
-        .removeOne({ _id: objectId(sellerId) })
+        .removeOne({ _id: objectId(userId) })
         .then(() => {
           resolve();
         });
@@ -200,6 +187,29 @@ module.exports = {
       db.get()
         .collection(collections.SELLERS_COLLECTION)
         .remove({})
+        .then(() => {
+          resolve();
+        });
+    });
+  },
+  
+
+  getAllShops: () => {
+    return new Promise(async (resolve, reject) => {
+      console.log("all shops");
+      let shops = await db
+        .get()
+        .collection(collections.SHOPS_COLLECTION)
+        .find()
+        .toArray();
+      resolve(shops);
+    });
+  },
+  removeShop: (userId) => {
+    return new Promise((resolve, reject) => {
+      db.get()
+        .collection(collections.SHOPS_COLLECTION)
+        .removeOne({ _id: objectId(userId) })
         .then(() => {
           resolve();
         });

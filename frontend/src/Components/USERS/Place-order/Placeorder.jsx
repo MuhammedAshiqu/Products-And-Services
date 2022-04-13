@@ -28,9 +28,9 @@ function Placeorder() {
   });
   const placeOrder = () => {
     axios.get("http://localhost:8008/place-order").then((response) => {
-      console.log("hAA", response);
+      console.log("data1", response);
       setdata(response.data);
-      console.log("yes", response.data);
+      console.log("data", response.data);
     });
   };
   const placeOrders = (meth) => {
@@ -40,7 +40,7 @@ function Placeorder() {
         console.log("AAh", response);
         // response.data.codSuccess && navigate.push('/order-success')
         setval(response.data.codSuccess);
-        alert("clear cart now");
+        alert("Order Placed");
 
         console.log("no", response.data);
       });
@@ -121,7 +121,6 @@ async function displayRazorpay() {
         <div className="leftSide">
           <div className="Contents">
             <h1>CheckOut Here</h1>
-
             {data && <h2>Total is : {data && data.total}</h2>}
             <h4>Cart Items : {data && data.cartCount}</h4>
           </div>

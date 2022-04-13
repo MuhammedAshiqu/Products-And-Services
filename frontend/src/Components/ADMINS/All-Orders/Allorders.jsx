@@ -18,7 +18,7 @@ function Allorders() {
   return (
     <div>
       <div className="table-container">
-        <table class="styled-table">
+        <table className="styled-table">
           <thead>
             <tr>
               <th>S.no</th>
@@ -28,9 +28,9 @@ function Allorders() {
             </tr>
           </thead>
           <tbody>
-            {data.map((i, index) => (
+            {data.map((i, key) => (
               <tr>
-                <td>{index+1}</td>
+                <td>{key+1}</td>
                 <td>{i.orderObject.date}</td>
                 <td>{i.orderObject.paymentMethod}</td>
                 <td>{i.orderObject.totalAmount}</td>

@@ -8,7 +8,7 @@ module.exports.connect = function (done) {
   // const url="mongodb://localhost:27017";
   // const url = "mongodb+srv://nihal:nihal@cluster0.aukqj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
  const url="mongodb+srv://pas:pas123@cluster0.ti6yh.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-  const dbname = "baithulliza";
+  const dbname = "baithulizza";
 
   mongoClient.connect(url, { useUnifiedTopology: true }, (err, data) => {
     if (err) {

@@ -1,12 +1,9 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState, useContext } from "react";
-import { Modal, Button } from "react-bootstrap";
-import { Link } from "react-dom";
 import { DataContext } from "../../../Context/Context";
 import { useHistory } from "react-router-dom";
 import "./AddProd.scss";
-import SellerHeader from '../SellerHeader/SellerHeader'
 
 function AddProd() {
   const { Users, AdminTrue, Cartcount, seller } = useContext(DataContext);
@@ -78,78 +75,7 @@ function AddProd() {
 
   return (
     <div>
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <div className="title">
-              <h1>ADD PRODUCTS</h1>
-            </div>
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <div className="addprod-form">
-            <input
-              type="text"
-              onChange={handleChange}
-              name="name"
-              placeholder="Product name"
-              required
-            />
-            <br />
-            <br />
-            <input
-              type="text"
-              onChange={handleChange}
-              name="category"
-              placeholder="Category"
-              required
-            />
-            <br />
-            <br />
-            <input
-              type="text"
-              onChange={handleChange}
-              name="price"
-              placeholder="Price"
-              required
-            />
-            <br />
-            <br />
-            <input
-              type="text"
-              onChange={handleChange}
-              name="description"
-              placeholder="Description"
-              required
-            />
-            <span style={{ color: "orange" }}>
-              <h6>*not lessthan 10 words</h6>
-            </span>
-            <br />
-            <input
-              accept="image/png"
-              onChange={(e) => setimage(e.target.files[0])}
-              type="file"
-              required
-            />
-          </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button onClick={handleAdd}>
-            {isloading ? "confirm" : "Add Product"}{" "}
-          </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-      {/* </Modal.Footer>
-      </Modal> */}
-
-      {/* try */}
-      {/* <SellerHeader/> */}
-      <div class="container">
+      <div className="container">
         <form method='POST' id="contact" onSubmit={handleAdd} >
           <h3>ADD PRODUCTS</h3>
 

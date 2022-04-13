@@ -12,6 +12,7 @@
     color: #ffffff;
     text-align: left;
     margin-left: 10px;
+    align-items: center;
   }
   .styled-table td {
     padding: 12px 15px;

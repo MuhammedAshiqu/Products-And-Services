@@ -51,6 +51,12 @@ function ShowallProds() {
                         <td>{i.Category}</td>
 
                         <td>
+                        <button
+                                // onClick={() => deleteProd(i._id)}
+                                className='btn btn-danger'
+                            >
+                                edit
+                            </button>
                             <button
                                 onClick={() => deleteProd(i._id)}
                                 className='btn btn-danger'

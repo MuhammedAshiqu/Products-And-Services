@@ -10,13 +10,13 @@ function ShopView({setres,i}) {
 				<div class="course">
 					<div class="course-preview">
 						{/* <h6>Course</h6> */}
-						<h2>{i.Category}</h2><br />
-						<span>{ i.Location}</span>
+						<h2>{i?.Category}</h2><br />
+						<span>Location:<br/>{ i?.Location}</span>
 					</div>
 					<div class="course-info">
 						
-						<h6>1234567893</h6>
-						<h2>{i.Name}</h2><br /><br /><br />
+						<h6><Link to ="tel:{i?.Phone}">{i?.Phone}</Link> </h6>
+						<h2>{i?.Name}</h2><br /><br /><br />
 						<Link to="/productview"><button class="btttn">View Products</button></Link>
 					</div>
 				</div>
