@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react'
 import './Admin.css'
 import { useHistory } from 'react-router-dom'
 import { DataContext } from '../../../Context/Context'
-import Footer1 from '../../Footer copy/Footer'
 
 function Admin() {
     const { AdminTrue } = useContext(DataContext)
@@ -39,16 +38,16 @@ function Admin() {
         <div classNameName="admin_body">
             <div className="admin_container">
                 <div className="row">
-                   
+
                     <div className="col-lg-6 col-md-8 login-box">
-                    
+
                         <div className="col-lg-12 login-title">
                             ADMIN PANEL
                         </div>
                         <h2 classNameName='yyy'>{message}</h2>
                         <div className="col-lg-12 login-form">
                             <div className="col-lg-12 login-form">
-                                <form  onSubmit={handleClick} >
+                                <form onSubmit={handleClick} >
                                     <div className="form-group">
                                         <label className="form-control-label">USERNAME</label>
                                         <input type="text" placeholder='email' name='Email' onChange={handleChange} />

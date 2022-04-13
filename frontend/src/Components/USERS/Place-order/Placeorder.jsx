@@ -245,8 +245,7 @@ async function displayRazorpay() {
           <button
             className="btn btn-success"
             style={{ height: "35px" }}
-            onClick={delet}
-          >
+            onClick={delet} >
             Clear cart now
           </button>
           <div className="cards">

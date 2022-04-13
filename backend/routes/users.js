@@ -118,35 +118,35 @@ router.get("/userproducts", verifySignedIn, (req, res) => {
     res.json(userproducts);
   });
 });
-router.get("/edit/:id", verifySignedIn, (req, res) => {
-  console.log("reached here");
-  console.log(req.params.id);
-  const id = req.params.id;
-  userHelper.editprod(id).then((result) => {
-    console.log(result);
-    res.json(result);
-  });
-});
-router.post("/editprod", verifySignedIn, (req, res) => {
-  console.log("hello world");
-  console.log(req.body);
-  db.get()
-    .collection("products")
-    .updateOne(
-      { _id: objectId(req.body.id) },
-      {
-        $set: {
-          Name: req.body.input.Name,
-          Category: req.body.input.Category,
-          Price: req.body.input.Price,
-          Description: req.body.input.Description,
-        },
-      }
-    )
-    .then((responce) => {
-      console.log(responce);
-    });
-});
+// router.get("/edit/:id", verifySignedIn, (req, res) => {
+//   console.log("reached here");
+//   console.log(req.params.id);
+//   const id = req.params.id;
+//   userHelper.editprod(id).then((result) => {
+//     console.log(result);
+//     res.json(result);
+//   });
+// });
+// router.post("/editprod", verifySignedIn, (req, res) => {
+//   console.log("hello world");
+//   console.log(req.body);
+//   db.get()
+//     .collection("products")
+//     .updateOne(
+//       { _id: objectId(req.body.id) },
+//       {
+//         $set: {
+//           Name: req.body.input.Name,
+//           Category: req.body.input.Category,
+//           Price: req.body.input.Price,
+//           Description: req.body.input.Description,
+//         },
+//       }
+//     )
+//     .then((responce) => {
+//       console.log(responce);
+//     });
+// });
 router.get("/add-to-cart/:id", verifySignedIn, function (req, res) {
   console.log("api call");
   let productId = req.params.id;

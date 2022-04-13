@@ -43,13 +43,13 @@ module.exports = {
       resolve(items);
     });
   },
-  editprod: async (userid) => {
-    const prodData = await db
-      .get()
-      .collection(collections.PRODUCTS_COLLECTION)
-      .findOne({ _id: objectId(userid) });
-    return prodData;
-  },
+  // editprod: async (userid) => {
+  //   const prodData = await db
+  //     .get()
+  //     .collection(collections.PRODUCTS_COLLECTION)
+  //     .findOne({ _id: objectId(userid) });
+  //   return prodData;
+  // },
 
   doSignup: (userData) => {
     console.log("Data is ", userData);

@@ -7,10 +7,10 @@ import { DataContext } from '../../../Context/Context';
 import { useHistory, useParams } from 'react-router-dom'
 
 
-function NewAdd1() {
+function UpdateProduct() {
   const { id } = useParams();
   console.log(id)
-  const { Users, AdminTrue, Cartcount } = useContext(DataContext)
+  const { Sellers, AdminTrue, Cartcount } = useContext(DataContext)
   const [adminTrue, setadminTrue] = AdminTrue
   const [cartCount, setcartCount] = Cartcount
   const [res, setres] = useState(false)
@@ -33,7 +33,7 @@ function NewAdd1() {
     Description: ''
   })
   const getData = () => {
-    axios.get(`http://localhost:8008/edit/${id}`).then((result) => {
+    axios.get(`http://localhost:8008/seller-edit/${id}`).then((result) => {
       console.log(result)
       setinput(result.data)
     })
@@ -44,15 +44,15 @@ function NewAdd1() {
     console.log(input)
   }
   const handleAdd = async () => {
-
-    await axios.post('http://localhost:8008/editprod', { id: id, input: input }).then((res) => {
+    // e.preventDefault()
+    await axios.post('http://localhost:8008/seller-editprod', { id: id, input: input }).then((res) => {
       console.log(res);
 
     })
   }
   const handleClose = () => {
     setShow(false);
-    history.push('/')
+    history.push('/seller-viewprod')
   }
   const handleShow = () => {
     setShow(true);
@@ -69,7 +69,7 @@ function NewAdd1() {
   return (
     <div>
 
-      <Modal show={show} onHide={handleClose}>
+      {/* <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>
             <div className="title">
@@ -92,9 +92,31 @@ function NewAdd1() {
           </Button>
           <Button onClick={handleAdd}>add </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
+
+
+      {/* try */}
+      <div>
+        <div className="container">
+          <form method='POST' id="contact" onSubmit={handleAdd} >
+            <h3>UPDATE PRODUCTS</h3>
+            <input type="text" onChange={handleChange} name='Name' value={input.Name} placeholder='Name' /><br />
+            <input type="text" onChange={handleChange} name='Category' value={input.Category} placeholder='Category' /><br />
+            <input type="text" onChange={handleChange} name='Price' value={input.Price} placeholder='Price' /><br />
+            <input type="text" onChange={handleChange} name='Description' value={input.Description} placeholder='Description' />
+            <button name="submit" type="submit" onClick={handleAdd}>
+              {isloading ? "confirm" : "Update Product"}{" "}
+            </button>
+            <button name="submit" type="reset" onClick={handleClose}>
+              Close
+            </button>
+          </form>
+        </div>
+
+        {/* try */}
+      </div>
     </div>
   )
 }
 
-export default NewAdd1
+export default UpdateProduct

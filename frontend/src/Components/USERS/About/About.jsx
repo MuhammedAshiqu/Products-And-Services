@@ -6,7 +6,6 @@ import { DataContext } from '../../../Context/Context';
 import './Login.scss';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast, ToastContainer } from 'react-toastify';
-import logo1 from './../../../loginq.jfif';
 import useForm from '../../Validation/Validation';
 
 function About() {

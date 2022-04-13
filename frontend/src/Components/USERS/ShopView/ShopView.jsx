@@ -15,7 +15,7 @@ function ShopView({setres,i}) {
 					</div>
 					<div class="course-info">
 						
-						<h6><Link to ="tel:{i?.Phone}">{i?.Phone}</Link> </h6>
+						<h6><a href="tel:`{i?.Phone}`">{i?.Phone}</a> </h6>
 						<h2>{i?.Name}</h2><br /><br /><br />
 						<Link to="/productview"><button class="btttn">View Products</button></Link>
 					</div>

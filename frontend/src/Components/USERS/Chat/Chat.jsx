@@ -18,9 +18,6 @@ function Chat() {
     await axios.get(`http://localhost:8008/chat/${id}`).then((response) => {
       console.log('response message', response);
       setchat(response.data.message);
-
-
-
     })
   }
   const getAllChats1 = async () => {
@@ -28,58 +25,31 @@ function Chat() {
     await axios.get(`http://localhost:8008/chat1/${id}`).then((response) => {
       console.log('reply', response);
       setreply(response.data.message);
-
-      // const arr= [...chat,...reply]
-      // console.log("hai",arr)
-
     })
   }
   const msg = async () => {
     await setab(ab => [...chat, ...reply])
-
-
-    //   console.log("timr",ab.time)
-    //  const result= ab.sort((function (a, b) {
-    //     return a.time.localeCompare(b.time);
-
-    // }))
-    // const result=await ab.sort((function (a, b) {
-    //   return(a.time-b.time);
-
-    // }))
-
-    console.log("jjj", result)
+    console.log("jjj", result);
     setre(result)
-    // 
   }
   console.log(ab)
   const result = ab.sort((function (a, b) {
     return (a.time - b.time);
-
   }))
-  console.log("hai", result)
-
+  console.log("hai", result);
   console.log('id', id);
-
   const sendChat = () => {
     axios.post('http://localhost:8008/chat', { reciver: id, message: message }).then((response) => {
-      alert("sent message")
+      alert("Message Sent Successfully");
+      window.location.reload(true);
     })
   }
-
-
-
 
   useEffect(() => {
     setadminTrue(false)
     getAllChats()
     getAllChats1()
     msg()
-
-
-
-
-
   }, [])
   return (
     <div>
@@ -91,10 +61,11 @@ function Chat() {
               alt
             />
             <h2></h2>
-             </header>
+          </header>
           <ul id="chat">
             {
               ab.map((i) => {
+                console.log("msgs")
                 if (i.sender == id) {
                   return (
                     <li className="you">
@@ -102,49 +73,33 @@ function Chat() {
                         {/* <span className="status green" /> */}
                       </div>
                       {/* <div className="triangle" /> */}
-                      <div className="message">
-
-                        {i.text}
-
-                      </div><br/>
-                        <h2>{i.sender}</h2>
-
+                      <div className="message">{i.text}</div><br />
+                      <h2>{i.sender}</h2>
                     </li>
                   )
                 }
                 else {
                   return (
-                    
                     <li className="me">
                       <div className="entete">
                         {/* <span className="status blue" /> */}
                       </div>
                       {/* <div className="triangle" /> */}
-                      <div className="message">
-                        {
-                          i.text}
-                      </div><br/>
-                          <h2>{i.sender}</h2>
+                      <div className="message">{i.text}</div><br />
+                      <h2>{i.sender}</h2>
                     </li>
                   )
                 }
               })
             }
-    </ul>
-          <footer>    <textarea onChange={(e) => setmessage(e.target.value)} placeholder="Type your message" defaultValue={""} />
+          </ul>
+          <footer><textarea onChange={(e) => setmessage(e.target.value)} placeholder="Type your message" defaultValue={""} />
             <button onClick={sendChat}>Send</button>
             <button onClick={msg}>load</button>
           </footer>
         </main>
       </div>
-
-
     </div>
-    // try
-
-
-   
-
   )
 }
 

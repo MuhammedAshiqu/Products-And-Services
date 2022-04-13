@@ -166,4 +166,34 @@ router.get("/all-shop/:id", (req, res) => {
   });
 });
 
+router.get("/seller-edit/:id", verifySignedIn, (req, res) => {
+  console.log("reached here");
+  console.log(req.params.id);
+  const id = req.params.id;
+  sellerHelper.editprod(id).then((result) => {
+    console.log(result);
+    res.json(result);
+  });
+});
+router.post("/seller-editprod", verifySignedIn, (req, res) => {
+  console.log("hello world");
+  console.log(req.body);
+  db.get()
+    .collection("products")
+    .updateOne(
+      { _id: objectId(req.body.id) },
+      {
+        $set: {
+          Name: req.body.input.Name,
+          Category: req.body.input.Category,
+          Price: req.body.input.Price,
+          Description: req.body.input.Description,
+        },
+      }
+    )
+    .then((responce) => {
+      console.log(responce);
+    });
+});
+
 module.exports = router;

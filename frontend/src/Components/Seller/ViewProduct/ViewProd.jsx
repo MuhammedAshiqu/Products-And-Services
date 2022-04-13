@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState, useContext } from 'react';
-import { Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import { DataContext } from '../../../Context/Context';
 
 function ShowallProds() {
@@ -39,7 +39,7 @@ function ShowallProds() {
                 <tr>
                     <th>No.</th>
                     <th>Name</th>
-                    <th>mail id</th>
+                    <th>Category</th>
                     <th>Option</th>
                 </tr>
             </thead>
@@ -49,20 +49,10 @@ function ShowallProds() {
                         <td>{index + 1}</td>
                         <td>{i.Name}</td>
                         <td>{i.Category}</td>
-
                         <td>
-                        <button
-                                // onClick={() => deleteProd(i._id)}
-                                className='btn btn-danger'
-                            >
-                                edit
-                            </button>
-                            <button
-                                onClick={() => deleteProd(i._id)}
-                                className='btn btn-danger'
-                            >
-                                Delete
-                            </button>
+                            <Link to={`/seller-editproduct/${i._id}`}>
+                                <button className='btn-primary'>edit</button></Link>
+                            <button onClick={() => deleteProd(i._id)} className='btn-danger' >Delete</button>
                         </td>
                     </tr>
                 ))}

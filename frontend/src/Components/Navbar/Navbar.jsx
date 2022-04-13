@@ -30,7 +30,7 @@ function Navbar() {
     const [currentUser, setcurrentUser] = useState()
     const notify = () => toast("successfuly Logout");
 
-
+    console.log('userdata',cartCount)
     const logout = () => {
         notify()
         axios.get('http://localhost:8008/signout').then((res) => {

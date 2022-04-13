@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { DataContext } from '../../../Context/Context';
+import './SellerShops.css'
 
 function SellersShops() {
     const [shops, setShops] = useState([]);
@@ -11,13 +12,13 @@ function SellersShops() {
         console.log(response.data)
         setShops(response.data)
     }
- 
+
     useEffect(() => {
         getShops()
     }, [])
-  return (
-    <div>
-        {
+    return (
+        <div>
+            {
             shops.map((shop) => {
                 return (
                     <div>
@@ -29,8 +30,9 @@ function SellersShops() {
                 )
             })
         }
-    </div>
-  )
+        
+        </div>
+    )
 }
 
 export default SellersShops

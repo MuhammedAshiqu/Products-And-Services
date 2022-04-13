@@ -53,19 +53,15 @@ function Change() {
           </tr>
         </thead>
         <tbody>
-          {items.map((i,key) => (
+          {items.map((i, key) => (
             <tr>
-              <td>{key+1} </td>
+              <td>{key + 1} </td>
               <td>{i.Name}</td>
               <td>{i.Price}</td>
               <td>{i.CreatedBy}</td>
               <td>
-                <button
-                  onClick={() => deleteItem(i._id)}
-                  className="btn btn-danger"
-                >
-                  Delete
-                </button>
+                {/* <button onClick={() => deleteItem(i._id)} className="btn-primary" > Edit</button> */}
+                <button onClick={() => deleteItem(i._id)} className="btn-danger" >Delete</button>
               </td>
             </tr>
           ))}

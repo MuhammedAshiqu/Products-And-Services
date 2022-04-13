@@ -9,8 +9,8 @@ function NewService() {
   const history = useHistory();
   const [show, setShow] = useState(false);
   const [input, setinput] = useState({
-    name:"",
-    email:"",
+    name: "",
+    email: "",
     item: "",
     location: "",
     contact: "",
@@ -79,32 +79,32 @@ function NewService() {
             {/* <Button variant="primary" onClick={handleClose}>
             Save Changes
           </Button> */}
-          {/* </Modal.Footer>
+      {/* </Modal.Footer>
         </Modal>
-      </> */} 
+      </> */}
 
       {/* try */}
 
-      <div class="container">  
-  <form id="contact" method="post"  onSubmit={handleSubmit} >
-    <h3>Add New Service</h3>
-    
-  
-      <input placeholder="Your name" type="text" name="name" onChange={handleChange} required />
-   
-      <input placeholder="Your Email Address" type="email" name="email" onChange={handleChange} required/>
+      <div class="container">
+        <form id="contact" method='POST' onSubmit={handleSubmit} >
+          <h3>Add New Service</h3>
 
-      <input placeholder="Job" type="text" name="item" onChange={handleChange} required />
-    
-      <input placeholder="Your Phone Number" type="tel" name="contact" onChange={handleChange} required/>
-  
-      <input placeholder="Location" type="text" name="location" onChange={handleChange} required />
-    
-      <button name="submit" type="submit">Submit</button>
-      <button name="submit" type="reset"  onClick={handleClose} >Cancel</button>
-    
-  </form>
-</div>
+
+          <input placeholder="Your name" type="text" name="name" onChange={handleChange} required />
+
+          <input placeholder="Your Email Address" type="email" name="email" onChange={handleChange} required />
+
+          <input placeholder="Job" type="text" name="item" onChange={handleChange} required />
+
+          <input placeholder="Your Phone Number" type="tel" name="contact" onChange={handleChange} required />
+
+          <input placeholder="Location" type="text" name="location" onChange={handleChange} required />
+
+          <button name="submit" type="submit">Submit</button>
+          <button name="submit" type="reset" onClick={handleClose} >Cancel</button>
+
+        </form>
+      </div>
 
 
       {/* try */}

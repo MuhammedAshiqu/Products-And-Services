@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../../Context/Context";
-import ProfilePic from "../../../backw.jfif";
 import Sidetab from "../Tabs/SideTab";
 
 function Profile() {

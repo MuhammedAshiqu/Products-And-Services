@@ -1,6 +1,5 @@
 import React from 'react'
 import axios from 'axios'
-import { Button, Container, Dropdown, DropdownButton, Navbar, Nav, NavDropdown, NavLink } from 'react-bootstrap'
 import './Adminheader.scss'
 import { Link } from 'react-router-dom'
 import { useHistory } from 'react-router-dom'
@@ -31,8 +30,8 @@ function Adminheader() {
         <h2 className="nav-brand">Admin Panel</h2>
         <div className="navbar-nav">
           <ul className="nav-list">
-          <li className="nav-item">
-              <Link to='/admin-Overview' > Overview </Link></li>
+          {/* <li className="nav-item">
+              <Link to='/admin-Overview' > Overview </Link></li> */}
             <li className="nav-item">
               <Link to='/admin-products' > Products </Link></li>
             <li className="nav-item">
@@ -44,7 +43,7 @@ function Adminheader() {
             <li className="nav-item">
               <Link to='/admin-allshops' > Shops</Link> </li>
               <li className="nav-item">
-              <Link to='/admin-services' > Services</Link> </li>
+              <Link to='/admin-allservices' > Services</Link> </li>
             <li className="nav-item">
               <Link to='/admin-addservice' >Add Service</Link></li>
             <li className="nav-item">

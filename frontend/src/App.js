@@ -44,6 +44,8 @@ import Showallsellers from "./Components/ADMINS/ShowAllSellers/Showallsellers";
 import ChatTable1 from "./Components/USERS/Chattable/Chattable1";
 import SellerProducts from "./Components/USERS/SellerProducts/SellerProducts";
 import SellersShops from "./Components/Seller/SellersShops/SellersShops";
+import UpdateProduct from "./Components/Seller/UpdateProduct/UpdateProducts";
+import Services from "./Components/ADMINS/Services/Services";
 
 function App() {
   const { Users, Cartcount, AdminTrue, IsLoaged, sellerTrue } =
@@ -79,6 +81,7 @@ function App() {
         <Route path="/admin-allorders" component={Allorders} />
         <Route path="/admin-addservice" component={NewService}></Route>
         <Route path="/admin-allshops" component={ShopView}></Route>
+        <Route path="/admin-allservices" component={Services}></Route>
 
         {/* Users Section */}
         <Route exact path="/">
@@ -113,6 +116,7 @@ function App() {
         <Route path="/seller-shopd/:id" component={Shopd} />
         <Route path="/seller-shop" component={SellersShops} />
         <Route path="/seller-orders" component={Shoporders} />
+        <Route path="/seller-editproduct/:id" component={UpdateProduct} />
         <Route path="/seller" component={SellerHeader} />
         <Footer></Footer>
       </BrowserRouter>

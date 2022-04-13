@@ -128,8 +128,8 @@ function AddShop() {
                     </form>
                 </div>
 
-                {/* try */}
             </div>
+                {/* try */}
         </div>
     );
 }

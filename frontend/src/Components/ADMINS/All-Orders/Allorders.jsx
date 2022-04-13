@@ -10,7 +10,7 @@ function Allorders() {
       setdata(response.data.orders);
     });
   };
-  
+
   useEffect(() => {
     getAllorders();
   }, []);
@@ -30,12 +30,10 @@ function Allorders() {
           <tbody>
             {data.map((i, key) => (
               <tr>
-                <td>{key+1}</td>
+                <td>{key + 1}</td>
                 <td>{i.orderObject.date}</td>
                 <td>{i.orderObject.paymentMethod}</td>
                 <td>{i.orderObject.totalAmount}</td>
-
-                {/* <td><button onClick={()=>deleteUser(i._id)}  className='btn btn-danger' >Delete</button></td> */}
               </tr>
             ))}
           </tbody>
