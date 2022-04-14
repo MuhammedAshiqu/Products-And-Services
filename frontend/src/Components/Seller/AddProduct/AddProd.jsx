@@ -22,9 +22,10 @@ function AddProd() {
     price: "",
     description: "",
   });
-
+  const[frame,setFrame]= useState()
   const handleChange = (e) => {
     setinput({ ...input, [e.target.name]: e.target.value });
+    // image.src=URL.createObjectURL(e.target.files[0]);
   };
 
   const handleAdd = async (e) => {
@@ -62,6 +63,7 @@ function AddProd() {
     setShow(false);
     history.push("/seller");
   };
+ 
   
   const handleShow = () => {
     setShow(true);
@@ -109,6 +111,7 @@ function AddProd() {
             type="file"
             required
           />
+          {/* <img id="image" src="" width="100px" height="100px"/> */}
           <textarea
             placeholder="Emter the description"
             onChange={handleChange}

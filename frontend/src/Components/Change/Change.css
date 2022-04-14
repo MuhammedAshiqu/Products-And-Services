@@ -64,9 +64,13 @@
     cursor: pointer;
     /* $blue: #3498db; */
 }
+.btn-primary:hover{
+    background: rgb(72, 103, 110);
+
+}
 
 .btn-danger {
-    background: rgb(223, 28, 2); 
+    background: rgb(243, 37, 9); 
     border: none;
     padding: 10px 25px;
     font-weight: 600px;
@@ -74,4 +78,8 @@
     cursor: pointer;
     color: white;
     transition: box-shadow 300ms ease-in-out, color 300ms ease-in-out;
+}
+.btn-danger:hover{
+    background: rgb(190, 9, 2);
+
 }

@@ -24,6 +24,7 @@ function Placeorder() {
   const [input, setinput] = useState({
     name: "",
     email: "",
+    mobile:"",
     address: "",
   });
   const placeOrder = () => {
@@ -144,6 +145,15 @@ async function displayRazorpay() {
               name="email"
               placeholder="Enter email..."
               type="email"
+              required
+
+            />  
+            <label htmlFor="mobile">Mobile</label>
+            <input
+              onChange={handleChange}
+              name="mobile"
+              placeholder="Enter mobile..."
+              type="tel"
               required
 
             />

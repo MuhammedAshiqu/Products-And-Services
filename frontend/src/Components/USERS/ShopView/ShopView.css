@@ -27,6 +27,7 @@
 	margin: 20px;
 	/* overflow: hidden; */
 	width: 600px;
+	text-transform: capitalize;
 }
 
 .course h6 {
@@ -169,6 +170,8 @@
 	transform: translateX(-50%);
 	text-align: center;
 	width: 235px;
+	text-transform: capitalize;
+
 }
 
 .social-panel p i {

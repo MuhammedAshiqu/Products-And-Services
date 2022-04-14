@@ -304,7 +304,7 @@ router.get("/wishlist", (req, res) => {
 
 // // const isReaded=await userHelper.getIsReaded()
 // // console.log('isReaded'+isReaded.length);
-// //  let allMessages = await db.get().collection('chat').find({reciver:user.Email,sender:'abhinchand@gmail.com'}).toArray();
+// //  let allMessages = await db.get().collection('chat').find({reciever:user.Email,sender:'abhinchand@gmail.com'}).toArray();
 // userHelper.sendChat(user,req.body).then((result)=>{
 
 //   res.json({message:result})
@@ -334,7 +334,7 @@ router.post("/chat", verifySignedIn, async (req, res) => {
 
   // const isReaded=await userHelper.getIsReaded()
   // console.log('isReaded'+isReaded.length);
-  //  let allMessages = await db.get().collection('chat').find({reciver:user.Email,sender:'abhinchand@gmail.com'}).toArray();
+  //  let allMessages = await db.get().collection('chat').find({reciever:user.Email,sender:'abhinchand@gmail.com'}).toArray();
   userHelper.sendChat(user, req.body).then((result) => {
     res.json({ message: result });
   });

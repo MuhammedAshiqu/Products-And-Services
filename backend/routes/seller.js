@@ -15,11 +15,11 @@ const verifySignedIn = (req, res, next) => {
     res.json({ message: "login first" });
   }
 };
-router.get("/", (req, res) => {
-  sellerHelper.showShop().then((shop) => {
-    res.json({ shop });
-  });
-});
+// router.get("/", (req, res) => {
+//   sellerHelper.showShop().then((shop) => {
+//     res.json({ shop });
+//   });
+// });
 router.get("/signup", function (req, res) {
   if (req.session.signedIn) {
     res.redirect("/seller");
@@ -87,27 +87,6 @@ router.get("/addproduct", verifySignedIn, (req, res) => {
 });
 // get all prod and delete
 
-router.get("/edit-product/:id", verifySignedIn, async function (req, res) {
-  let administator = req.session.seller;
-  let productId = req.params.id;
-  let product = await sellerHelper.getProductDetails(productId);
-  console.log(product);
-  res.render("seller/edit-product", { seller: true, product, administator });
-});
-
-router.post("/edit-product/:id", verifySignedIn, function (req, res) {
-  let productId = req.params.id;
-  sellerHelper.updateProduct(productId, req.body).then(() => {
-    if (req.files) {
-      let image = req.files.Image;
-      if (image) {
-        image.mv("./public/images/product-images/" + productId + ".png");
-      }
-    }
-    res.redirect("/seller/all-products");
-  });
-});
-
 router.get("/shop-orders", function (req, res) {
   console.log("first");
   let administator = req.session.seller;
@@ -170,12 +149,12 @@ router.get("/seller-edit/:id", verifySignedIn, (req, res) => {
   console.log("reached here");
   console.log(req.params.id);
   const id = req.params.id;
-  sellerHelper.editprod(id).then((result) => {
-    console.log(result);
+  sellerHelper.editproduc(id).then((result) => {
+    console.log("product edit",result);
     res.json(result);
   });
 });
-router.post("/seller-editprod", verifySignedIn, (req, res) => {
+router.post("/seller-editproduc", verifySignedIn, (req, res) => {
   console.log("hello world");
   console.log(req.body);
   db.get()

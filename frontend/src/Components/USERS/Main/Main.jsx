@@ -12,24 +12,27 @@ import CardS from "../Card/Card";
 function Main() {
   const history = useHistory();
 
-  const { State, AdminTrue, Users, Cartcount } = useContext(DataContext);
+  const { State, AdminTrue, Users, Cartcount,sessionName } = useContext(DataContext);
   // const [state,setstate]=State
   const [adminTrue, setadminTrue] = AdminTrue;
   const [state, setstate] = useState([]);
   const [user, setuser] = Users;
-  // const [contact,setcontact]=Users
+  const [contact,setcontact]=Users
   const [cUser, setcUser] = useState("");
   const [cartCount, setcartCount] = Cartcount;
   const [res, setres] = useState(false);
+  // const [Name1,setName1]=sessionName;
 
   const getcurrentUser = () => {
     const currentUser = localStorage.getItem("user");
+    console.log("session User",currentUser)
     setcUser(currentUser);
   };
   const getData = () => {
     console.log("getdata working");
     axios.get(process.env.REACT_APP_API_URL).then((response) => {
       console.log("product data",response.data);
+      // setName1('name',response.data.user.Name);
       setcartCount(response.data.cartCount);
       // setstate(response.data.product);
     });

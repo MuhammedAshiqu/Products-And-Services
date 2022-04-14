@@ -92,30 +92,30 @@ module.exports = {
   },
 
 
-  addProduct: (product, user, callback) => {
-    return new Promise((resolve, reject) => {
-      // console.log("my",user);
-      // console.log(product);
-      product.input.price = parseInt(product.input.price);
-      const products = {
-        Name: product.input.name,
-        Category: product.input.category,
-        Price: product.input.price,
-        Description: product.input.description,
-        url: product.url,
-        CreatedBy: user.Email,
-        reviews: [],
-      };
+  // addProduct: (product, user, callback) => {
+  //   return new Promise((resolve, reject) => {
+  //     // console.log("my",user);
+  //     // console.log(product);
+  //     product.input.price = parseInt(product.input.price);
+  //     const products = {
+  //       Name: product.input.name,
+  //       Category: product.input.category,
+  //       Price: product.input.price,
+  //       Description: product.input.description,
+  //       url: product.url,
+  //       CreatedBy: user.Email,
+  //       reviews: [],
+  //     };
 
-      db.get()
-        .collection(collections.PRODUCTS_COLLECTION)
-        .insertOne(products)
-        .then((data) => {
-          // console.log(data);
-          resolve(data.ops[0]._id);
-        });
-    });
-  },
+  //     db.get()
+  //       .collection(collections.PRODUCTS_COLLECTION)
+  //       .insertOne(products)
+  //       .then((data) => {
+  //         // console.log(data);
+  //         resolve(data.ops[0]._id);
+  //       });
+  //   });
+  // },
   addToCart: (productId, userId, Name, image) => {
     console.log(userId);
     let productObject = {
@@ -349,11 +349,12 @@ module.exports = {
       let orderObject = {
         deliveryDetails: {
           mobile: order.mobile,
+          name:order.name,
           address: order.address,
           pincode: order.pincode,
         },
-        userId: objectId(userId),
-        user: user,
+        // userId: objectId(userId._Id),
+        // user: user,
         paymentMethod: order.meth,
         products: products,
         totalAmount: total,
@@ -583,7 +584,7 @@ module.exports = {
     return new Promise(async (resolve, reject) => {
       const data = {
         sender: user.Email,
-        reciver: items.reciver,
+        reciever: items.reciever,
         text: items.message,
         isReaded: true,
         time: Date.now(),
@@ -598,20 +599,20 @@ module.exports = {
     });
   },
   getall: (user, id) => {
-    console.log("reciver is ", user.Email);
+    console.log("reciever is ", user.Email);
     console.log("id", id);
     return new Promise(async (resolve, reject) => {
       const messages = await db
         .get()
         .collection("chat")
-        .find({ reciver: user.Email, sender: id })
+        .find({ reciever: user.Email, sender: id })
         .toArray();
       console.log("messages are", messages);
       // const messages = await db.get().collection('chat').find().toArray();
       // const aar = [];
       // messages.map((i) => {
       //   var isMe = false;
-      //   if (i.reciver == user.Email) {
+      //   if (i.reciever == user.Email) {
       //     isMe = true;
       //   }
       //   i.isMe = isMe;
@@ -624,20 +625,20 @@ module.exports = {
   },
 
   getOne: (user, id) => {
-    console.log("reciver is ", user.Email);
+    console.log("reciever is ", user.Email);
     console.log("id", id);
     return new Promise(async (resolve, reject) => {
       const messages = await db
         .get()
         .collection("chat")
-        .find({ reciver: id, sender: user.Email })
+        .find({ reciever: id, sender: user.Email })
         .toArray();
       console.log("replies are", messages);
       // const messages = await db.get().collection('chat').find().toArray();
       // const aar = [];
       // messages.map((i) => {
       //   var isMe = false;
-      //   if (i.reciver == user.Email) {
+      //   if (i.reciever == user.Email) {
       //     isMe = true;
       //   }
       //   i.isMe = isMe;
@@ -653,7 +654,7 @@ module.exports = {
       const msg = await db
         .get()
         .collection("chat")
-        .find({ reciver: user.Email })
+        .find({ reciever: user.Email })
         .toArray();
       console.log("sent are", msg);
       resolve(msg);

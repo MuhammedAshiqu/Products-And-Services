@@ -70,7 +70,7 @@ module.exports = {
         url: shop.url,
         CreatedBy: seller?.Email,
         SellerId: seller?._id,
-        reviews: [],
+        // reviews: [],
       };
 
       db.get()
@@ -96,7 +96,7 @@ module.exports = {
         url: product.url,
         CreatedBy: product?.sellerId?.Email,
         sellerId: product?.sellerId?._id,
-        reviews: [],
+        // reviews: [],
       };
 
       db.get()
@@ -134,7 +134,8 @@ module.exports = {
     });
   },
 
-  editprod: async (sellerid) => {
+  editproduc: async (sellerid) => {
+    console.log("bhjshsahuuyh")
     const prodData = await db
       .get()
       .collection(collections.PRODUCTS_COLLECTION)
@@ -183,7 +184,7 @@ module.exports = {
       const msg = await db
         .get()
         .collection("chat")
-        .find({ reciver: user.Email })
+        .find({ reciever: user.Email })
         .toArray();
       console.log("sent are", msg);
       resolve(msg);

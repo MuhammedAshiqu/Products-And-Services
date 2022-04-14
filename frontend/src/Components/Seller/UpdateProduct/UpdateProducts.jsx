@@ -69,33 +69,6 @@ function UpdateProduct() {
   return (
     <div>
 
-      {/* <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <div className="title">
-              <h1>Update PRODUCTS</h1>
-            </div></Modal.Title>
-        </Modal.Header>
-        <Modal.Body>  <div className="addprod-form">
-          <input type="text" onChange={handleChange} name='Name' value={input.Name} /><br /><br />
-          <input type="text" onChange={handleChange} name='Category' value={input.Category} placeholder='Category' /><br /><br />
-          <input type="text" onChange={handleChange} name='Price' value={input.Price} placeholder='Price' /><br /><br />
-          <input type="text" onChange={handleChange} name='Description' value={input.Description} placeholder='Description' />
-          <span style={{ color: "orange" }}><h6>*not lessthan 10 words</h6></span><br />
-
-
-        </div></Modal.Body>
-        <Modal.Footer>
-
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button onClick={handleAdd}>add </Button>
-        </Modal.Footer>
-      </Modal> */}
-
-
-      {/* try */}
       <div>
         <div className="container">
           <form method='POST' id="contact" onSubmit={handleAdd} >

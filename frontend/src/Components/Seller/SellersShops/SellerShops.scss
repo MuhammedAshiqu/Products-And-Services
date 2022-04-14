@@ -1,0 +1,130 @@
+    .shop_profile_container{
+      margin: 1em;
+    }
+    .shop_profile_container h2{
+      margin: 1em;
+    }
+    .shop_profile {
+      margin: auto;
+      height: auto;
+      width: 400px;
+      background: #fcfafa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      border-radius: 20px;
+      box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+      -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      // overflow-y: scroll;
+    }
+    
+    ::-webkit-scrollbar {
+      display: none; /* for Chrome, Safari, and Opera */
+    }
+    
+    .shop_header-color {
+      // border-radius: 20px 20px 0 0;
+      padding-bottom: 150px;
+      width: 400px;
+      // background: rgb(5, 4, 4);
+    }
+    
+    .shop_profile-pic img {
+      height: 200px;
+      width: 200px;
+      // border-radius: 50%;
+      border: 5px solid #ffffff;
+      margin-top: -100px;
+    }
+    
+    .title {
+      margin-bottom: 25px;
+    }
+    
+    .shop_title h2 ,i{
+      font-size: 20px;
+      font-weight: 700;
+      // color: rgb(248, 245, 245);
+      margin-bottom: 5px;
+      letter-spacing: 0.025em;
+      text-transform: uppercase;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    
+    .shop_title h4 {
+      font-size: 18px;
+      letter-spacing: 0.01em;
+      // color: rgb(177, 73, 73);
+      text-transform: capitalize;
+      font-family: 'Times New Roman', Times, serif;
+      text-transform: capitalize;
+
+      span {
+        color: #4f759b;
+        font-weight: 700;
+      }
+    }
+    
+    .description {
+      margin-bottom: 25px;
+      color: rgb(124, 32, 32);
+      letter-spacing: 0.01em;
+    
+      p:not(:last-child) {
+        margin-bottom: 5px;
+      }
+    }
+    
+    // .button {
+      // font-family: "Open Sans", sans-serif;
+      // color: #ffffff;
+      // background: #dde1e6;
+      // font-size: 15px;
+      // font-weight: 600;
+      // // letter-spacing: 0.025em;
+      // border: none;
+      // border-radius: 15px;
+      // min-height: 10px;
+      // width: 100px;
+      // margin-bottom: 1px;
+      // transition: all 0.2s ease;
+      // cursor: pointer;
+      
+    // }
+    
+    // .button:hover {
+      // width: 115px;
+      // background: #b7bbc0;
+    // }
+    
+    .images-container {
+      width: 350px;
+    
+      .image {
+        margin-bottom: 25px;
+    
+        img {
+          width: 100%;
+          border-radius: 5px;
+          margin-bottom: 5px;
+        }
+    
+        i {
+          color: #9b1d20;
+          display: flex;
+          align-items: center;
+          margin-left: 10px;
+    
+          span {
+            margin-left: 5px;
+            font-family: "Open Sans", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: #000000;
+          }
+        }
+      }
+    }
+    

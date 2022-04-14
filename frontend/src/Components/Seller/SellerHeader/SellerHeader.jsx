@@ -90,7 +90,7 @@ function SellerHeader() {
 
 
                 <li>
-                <div className=" button">{isLoaged ? <h5 onClick={logout}> Logout </h5> : <Link style={{ textDecoration: 'none' }} to='seller-signin' > <h5 onClick={reload}  >Login</h5></Link>}</div>
+                <div className=" btn-primary">{isLoaged ? <h5 onClick={logout}> Logout </h5> : <Link style={{ textDecoration: 'none' }} to='seller-signin' > <h5 onClick={reload}  >Login</h5></Link>}</div>
                 </li>
               
 

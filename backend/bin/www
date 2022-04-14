@@ -15,7 +15,9 @@ require('dotenv').config();
  */
 
 // var port = normalizePort(process.env.PORT || '8008');
-var port =app.listen(process.env.PORT || '8008',()=>{
+// var port =app.listen(process.env.PORT || '8008',()=>{
+var port =app.listen(process.env.PORT ,()=>{
+
   console.log("connected succesfully");
 })
 

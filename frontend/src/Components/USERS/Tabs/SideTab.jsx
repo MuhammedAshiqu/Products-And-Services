@@ -22,7 +22,7 @@ const Sidetab = ({ nwUser }) => {
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
             />
 
-            <h2>Profile</h2>
+            <h2>PROFILE</h2>
           <div class="profile">
             <div class="profile-pic">
               <div class="header-color"></div>
@@ -31,22 +31,22 @@ const Sidetab = ({ nwUser }) => {
                 alt="Profile Picture"
               />
             </div>
-            <div class="title">
-              <h1>
+            <div class="profile_title">
+              <h2>
                 Name:<i>{nwUser && nwUser.Name}</i>
-              </h1>
+              </h2>
               <br />
-              <h2>
+              <h4>
                 Email:<i>{nwUser && nwUser.Email}</i>
-              </h2>
+              </h4>
               <br />
-              <h2>
+              <h4>
                 Phone Number:<i>{nwUser && nwUser.Phone}</i>
-              </h2>
+              </h4>
               <br />
-              <h2>
+              <h4>
                 Address:<i>{nwUser && nwUser.Address}</i>
-              </h2>
+              </h4>
               <br />
             </div>
           </div>

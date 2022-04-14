@@ -67,7 +67,7 @@
   border-radius: 30px;
 }
 .btn-sucess{
-  background: rgb(30, 182, 63);
+  background: rgb(36, 172, 65);
   border: none;
   padding:10px 25px;
   font-weight: 600px;
@@ -76,9 +76,12 @@
   margin: 2em;
   color:white;
   align-items: center;
-
+}
+.btn-sucess:hover{
+  background: rgb(20, 97, 37);
 
 }
+
 .btn-danger{
   background: rgb(223, 28, 2);
   border: none;

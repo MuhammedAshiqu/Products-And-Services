@@ -20,14 +20,17 @@ function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false)
     // const [isLoaged,setisLoaged]=IsLoaged
 
-    const { Users, Cartcount, AdminTrue, IsLoaged } = useContext(DataContext)
+    const { Users, Cartcount, AdminTrue, IsLoaged, sessionName } = useContext(DataContext)
     const [isLoaged, setisLoaged] = IsLoaged
     const [adminTrue, setadminTrue] = AdminTrue
     const history = useHistory()
     const [user, setuser] = Users
-    const [cartCount, setcartCount] = Cartcount
+    const [cartCount, setcartCount] = Cartcount;
+    const [contact, setconatct] = Users;
     const [refresh, setrefresh] = useState(false)
-    const [currentUser, setcurrentUser] = useState()
+    const [currentUser, setcurrentUser] = useState();
+    const [Name1, setName1] = sessionName;
+
     const notify = () => toast("successfuly Logout");
 
 
@@ -48,6 +51,8 @@ function Navbar() {
 
         })
     }
+
+
     const reload = () => {
         setrefresh(true)
         setrefresh(false)
@@ -76,6 +81,7 @@ function Navbar() {
                             <Link to='/profile'> <li>Profile</li></Link>
                             <div style={{ marginTop: '15px' }} className="cartIcon">
                                 <Link style={{ textDecoration: 'none', color: '#fff' }} to='/cart' >  <h2 > <BsCart4 /> <span style={{ fontSize: '30px' }} >{isLoaged && cartCount} </span>  </h2> </Link>
+                                <Link style={{ textDecoration: 'none', color: '#fff' }} to='/cart' >  <h2 > <span style={{ fontSize: '30px' }} >{isLoaged && Name1} </span>  </h2> </Link>
                             </div>
                         </>
 

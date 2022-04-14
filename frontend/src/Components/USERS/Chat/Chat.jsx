@@ -39,7 +39,7 @@ function Chat() {
   console.log("hai", result);
   console.log('id', id);
   const sendChat = () => {
-    axios.post('https://productsandservices.herokuapp.com/chat', { reciver: id, message: message }).then((response) => {
+    axios.post('https://productsandservices.herokuapp.com/chat', { reciever: id, message: message }).then((response) => {
       alert("Message Sent Successfully");
       window.location.reload(true);
     })

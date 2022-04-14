@@ -77,6 +77,15 @@ router.get("/signin", function (req, res) {
     req.session.signInErr = null;
   }
 });
+router.get("/viewService", function (req, res) {
+  db.get()
+    .collection("service")
+    .find()
+    .toArray()
+    .then((service) => {
+      res.json({ service });
+    });
+});
 
 router.post("/signin", function (req, res) {
   console.log('admin details are',req.body);
@@ -190,6 +199,13 @@ router.get("/remove-seller/:id", function (req, res) {
     res.json({message:'seller deleted'});
   });
 });
+router.get("/remove-shop/:id", function (req, res) {
+  let sellerId = req.params.id;
+  adminHelper.removeShop (sellerId).then(() => {
+    res.json({message:'seller deleted'});
+  });
+});
+
 
 router.get("/remove-all-sellers", verifySignedIn, function (req, res) {
   adminHelper.removeAllSellers().then(() => {
