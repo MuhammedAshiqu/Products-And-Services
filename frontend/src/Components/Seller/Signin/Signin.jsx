@@ -45,6 +45,8 @@ function Signin() {
   const handleClick = (e) => {
     e.preventDefault();
 
+    console.log('first');
+
     axios
       .post('https://productsandservices.herokuapp.com/seller/signin', input)
       .then((response) => {
