@@ -5,7 +5,7 @@ function Shoporders() {
     const [data, setdata] = useState([]);
     const getShoporders = () => {
         axios
-            .get('https://productsandservices.herokuapp.com/seller/shop-orders')
+            .get('http://localhost:8080/seller/shop-orders')
             .then((response) => {
                 console.log(response);
                 setdata(response.data.orders);

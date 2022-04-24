@@ -38,7 +38,7 @@ function Main() {
     });
   };
   const data=()=>{
-    axios.get("https://productsandservices.herokuapp.com/seller",).then((res)=>{
+    axios.get("http://localhost:8080/seller",).then((res)=>{
       console.log("shop data",res);
       setstate(res.data.shop)
     })

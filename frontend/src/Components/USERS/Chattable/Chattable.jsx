@@ -10,7 +10,7 @@ function ChatTable() {
   const [send, setsend] = useState([])
   const getMessages = () => {
 
-    axios.get(`https://productsandservices.herokuapp.com/messages`).then((result) => {
+    axios.get(`http://localhost:8080/messages`).then((result) => {
       console.log(result.data)
       setarr(result.data)
 

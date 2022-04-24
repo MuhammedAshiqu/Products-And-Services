@@ -29,7 +29,7 @@ function Placeorder() {
     });
     const placeOrder = () => {
         axios
-            .get('https://productsandservices.herokuapp.com/place-order')
+            .get('http://localhost:8080/place-order')
             .then((response) => {
                 console.log('data1', response);
                 setdata(response.data);
@@ -38,7 +38,7 @@ function Placeorder() {
     };
     const placeOrders = (meth) => {
         axios
-            .post('https://productsandservices.herokuapp.com/place-order', {
+            .post('http://localhost:8080/place-order', {
                 meth,
                 order: input,
             })
@@ -53,7 +53,7 @@ function Placeorder() {
     };
     const delet = () => {
         axios
-            .post('https://productsandservices.herokuapp.com/delete')
+            .post('http://localhost:8080/delete')
             .then((result) => {
                 console.log('deleted', result.data);
                 navigate.push('/order-success');

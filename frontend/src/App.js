@@ -46,7 +46,7 @@ import SellerProducts from "./Components/USERS/SellerProducts/SellerProducts";
 import SellersShops from "./Components/Seller/SellersShops/SellersShops";
 import UpdateProduct from "./Components/Seller/UpdateProduct/UpdateProducts";
 import Services from "./Components/ADMINS/Services/Services";
-
+import EditService from "./Components/ADMINS/EditService/EditService";
 function App() {
   const { Users, Cartcount, AdminTrue, IsLoaged, sellerTrue } =
     useContext(DataContext);
@@ -60,7 +60,7 @@ function App() {
     it && setisLoaged(true);
     setthing(it);
 
-    axios.get("https://productsandservices.herokuapp.com/signin").then((res) => {
+    axios.get("http://localhost:8080/signin").then((res) => {
       console.log(res);
       res.user && setisLoaged(true);
     });
@@ -82,7 +82,7 @@ function App() {
         <Route path="/admin-addservice" component={NewService}></Route>
         <Route path="/admin-allshops" component={ShopView}></Route>
         <Route path="/admin-allservices" component={Services}></Route>
-
+        <Route path="/admin-editservice/:id" component={EditService}></Route>
         {/* Users Section */}
         <Route exact path="/">
           {" "}

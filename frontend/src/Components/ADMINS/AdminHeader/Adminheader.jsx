@@ -8,7 +8,7 @@ function Adminheader() {
   const history = useHistory()
 
   const logout = () => {
-    axios.get('https://productsandservices.herokuapp.com/admin/signout').then((response) => {
+    axios.get('http://localhost:8080/admin/signout').then((response) => {
       console.log(response);
       history.push('/admin')
     })

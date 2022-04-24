@@ -33,7 +33,7 @@ function NewAdd1() {
     Description: ''
   })
   const getData = () => {
-    axios.get(`https://productsandservices.herokuapp.com/edit/${id}`).then((result) => {
+    axios.get(`http://localhost:8080/edit/${id}`).then((result) => {
       console.log(result)
       setinput(result.data)
     })
@@ -45,7 +45,7 @@ function NewAdd1() {
   }
   const handleAdd = async () => {
 
-    await axios.post('https://productsandservices.herokuapp.com/editprod', { id: id, input: input }).then((res) => {
+    await axios.post('http://localhost:8080/editprod', { id: id, input: input }).then((res) => {
       console.log(res);
 
     })

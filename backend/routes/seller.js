@@ -154,7 +154,7 @@ router.get("/seller-edit/:id", verifySignedIn, (req, res) => {
     res.json(result);
   });
 });
-router.post("/seller-editproduc", verifySignedIn, (req, res) => {
+router.post("/seller-editprod", verifySignedIn, (req, res) => {
   console.log("hello world");
   console.log(req.body);
   db.get()
@@ -172,6 +172,7 @@ router.post("/seller-editproduc", verifySignedIn, (req, res) => {
     )
     .then((responce) => {
       console.log(responce);
+      res.json()
     });
 });
 

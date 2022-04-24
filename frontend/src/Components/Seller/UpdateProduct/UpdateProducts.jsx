@@ -33,7 +33,7 @@ function UpdateProduct() {
     Description: ''
   })
   const getData = () => {
-    axios.get(`https://productsandservices.herokuapp.com/seller-edit/${id}`).then((result) => {
+    axios.get(`http://localhost:8080/seller/seller-edit/${id}`).then((result) => {
       console.log(result)
       setinput(result.data)
     })
@@ -43,11 +43,12 @@ function UpdateProduct() {
     setinput({ ...input, [e.target.name]: e.target.value })
     console.log(input)
   }
-  const handleAdd = async () => {
+  const handleAdd =  () => {
     // e.preventDefault()
-    await axios.post('https://productsandservices.herokuapp.com/seller-editprod', { id: id, input: input }).then((res) => {
+     axios.post('http://localhost:8080/seller/seller-editprod', { id: id, input: input }).then((res) => {
       console.log(res);
-
+    window.location.href="/seller-viewprod"
+    alert('edited')
     })
   }
   const handleClose = () => {
@@ -77,7 +78,7 @@ function UpdateProduct() {
             <input type="text" onChange={handleChange} name='Category' value={input.Category} placeholder='Category' /><br />
             <input type="text" onChange={handleChange} name='Price' value={input.Price} placeholder='Price' /><br />
             <input type="text" onChange={handleChange} name='Description' value={input.Description} placeholder='Description' />
-            <button name="submit" type="submit" onClick={handleAdd}>
+            <button name="submit" type="submit" >
               {isloading ? "confirm" : "Update Product"}{" "}
             </button>
             <button name="submit" type="reset" onClick={handleClose}>

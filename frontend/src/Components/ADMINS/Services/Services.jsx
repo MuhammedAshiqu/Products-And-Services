@@ -1,18 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { DataContext } from '../../../Context/Context'
+import { DataContext } from "../../../Context/Context";
 function Services() {
-
   const { Sellers, AdminTrue, Cartcount } = useContext(DataContext);
   const [adminTrue, setadminTrue] = AdminTrue;
 
   const [data, setdata] = useState([]);
   const getServices = () => {
-    axios.get("https://productsandservices.herokuapp.com/admin/viewService").then((response) => {
+    axios.get("http://localhost:8080/admin/viewService").then((response) => {
       console.log(response);
       setdata(response.data.service);
     });
   };
+  const deleteHandler = (_id) => {
+    axios
+      .post("http://localhost:8080/admin/service/delete", { _id })
+      .then((res) => {
+        if (res.data.status) {
+          alert("successfully deleted");
+          setdata(data.filter((i) => i._id !== _id));
+        } else alert("Failed to delete");
+      })
+      .catch((e) => alert(e.message || "something went wrong"));
+  };
+
   useEffect((e) => {
     setadminTrue(true);
     getServices();
@@ -31,7 +42,6 @@ function Services() {
                 <th>Location</th>
                 <th>Contact</th>
                 <th>Options</th>
-
               </tr>
             </thead>
             <tbody>
@@ -44,8 +54,20 @@ function Services() {
                   <td>{i.location}</td>
                   <td>{i.contact}</td>
                   <td>
-                    <button className="btn-primary" >Edit</button>
-                    <button className="btn-danger" >Delete</button>
+                    <button
+                      className="btn-primary"
+                      onClick={() =>
+                        (window.location.href = "/admin-editservice/" + i._id)
+                      }
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn-danger"
+                      onClick={() => deleteHandler(i._id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                   {/* <td><button onClick={()=>deleteUser(i._id)}  className='btn btn-danger' >Delete</button></td> */}
                 </tr>
@@ -55,7 +77,7 @@ function Services() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Services
+export default Services;

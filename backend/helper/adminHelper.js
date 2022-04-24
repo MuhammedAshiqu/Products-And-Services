@@ -119,10 +119,12 @@ module.exports = {
         .collection(collections.PRODUCTS_COLLECTION)
         .remove({})
         .then(() => {
-          db.get().collection(collections.CART_COLLECTION).deleteMany({}).then((res)=>{
-            resolve();
-          })
-          
+          db.get()
+            .collection(collections.CART_COLLECTION)
+            .deleteMany({})
+            .then((res) => {
+              resolve();
+            });
         });
     });
   },
@@ -192,7 +194,6 @@ module.exports = {
         });
     });
   },
-  
 
   getAllShops: () => {
     return new Promise(async (resolve, reject) => {
@@ -272,7 +273,8 @@ module.exports = {
     return new Promise(async (resolve, reject) => {
       db.get()
         .collection(collections.PRODUCTS_COLLECTION)
-        .createIndex({ Name : "text" }).then(async()=>{
+        .createIndex({ Name: "text" })
+        .then(async () => {
           let result = await db
             .get()
             .collection(collections.PRODUCTS_COLLECTION)
@@ -283,8 +285,45 @@ module.exports = {
             })
             .toArray();
           resolve(result);
-        })
-
+        });
     });
   },
+  deleteService: (_id) =>
+    new Promise((resolve, reject) => {
+      db.get()
+        .collection("service")
+        .removeOne({ _id: objectId(_id) })
+        .then(() => resolve())
+        .catch(() => reject());
+    }),
+  getService: (_id) =>
+    new Promise((resolve, reject) => {
+      db.get()
+        .collection("service")
+        .findOne({ _id: objectId(_id) })
+        .then((data) => resolve(data))
+        .catch(() => reject());
+    }),
+  editService: (data) =>
+    new Promise((resolve, reject) => {
+      const { id, input } = data;
+      db.get()
+        .collection("service")
+        .updateOne(
+          { _id: objectId(id) },
+          {
+            $set: {
+              name:input.name,
+              email:input.email,item: input.item,
+              location: input.location,
+              contact: input.contact
+            },
+          }
+        )
+        .then(() => resolve())
+        .catch((e) => {
+          console.log(e);
+          reject();
+        });
+    }),
 };

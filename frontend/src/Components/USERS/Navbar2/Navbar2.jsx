@@ -29,7 +29,7 @@ function Navbar2() {
 
     const logout = () => {
         notify()
-        axios.get('https://productsandservices.herokuapp.com/signout').then((res) => {
+        axios.get('http://localhost:8080/signout').then((res) => {
             console.log(res);
             if (res.data.message = 'logout success') {
                 localStorage.removeItem('user')

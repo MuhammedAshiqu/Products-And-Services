@@ -20,7 +20,7 @@ function Admin() {
     }
     const handleClick = (e) => {
         e.preventDefault()
-        axios.post('https://productsandservices.herokuapp.com/admin/signin', input).then((res) => {
+        axios.post('http://localhost:8080/admin/signin', input).then((res) => {
             console.log(res);
             setadminTrue(res.data.admin)
             setmessage(res.data.message)

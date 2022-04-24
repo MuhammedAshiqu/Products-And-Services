@@ -45,7 +45,7 @@ function AddProd() {
       });
     url &&
       (await axios
-        .post("https://productsandservices.herokuapp.com/seller/addproduct", {
+        .post("http://localhost:8080/seller/addproduct", {
           input: input,
           url: url,
           sellerId: seller,

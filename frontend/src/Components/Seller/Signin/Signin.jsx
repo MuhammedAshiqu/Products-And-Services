@@ -48,7 +48,7 @@ function Signin() {
     console.log('first');
 
     axios
-      .post('https://productsandservices.herokuapp.com/seller/signin', input)
+      .post('http://localhost:8080/seller/signin', input)
       .then((response) => {
         const vname = response.data.session?.seller;
         console.log('chh', vname);

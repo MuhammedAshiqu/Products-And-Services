@@ -3,13 +3,13 @@ var adminHelper = require("../helper/adminHelper");
 var fs = require("fs");
 const userHelper = require("../helper/userHelper");
 var router = express.Router();
-var db=require("../config/connection")
+var db = require("../config/connection");
 
 const verifySignedIn = (req, res, next) => {
   if (req.session.signedInAdmin) {
     next();
   } else {
-    res.json({message:'Please Login First'});
+    res.json({ message: "Please Login First" });
   }
 };
 
@@ -17,21 +17,21 @@ const verifySignedIn = (req, res, next) => {
 router.get("/", function (req, res, next) {
   let administator = req.session.admin;
   adminHelper.getAllProducts().then((products) => {
-    res.json( { admin: true, products, administator });
+    res.json({ admin: true, products, administator });
   });
 });
 
-router.get("/all-shops",  function (req, res) {
+router.get("/all-shops", function (req, res) {
   console.log("shop");
   let administator = req.session.admin;
   adminHelper.getAllShops().then((shops) => {
-   res.json( { admin: true, administator, shops });
+    res.json({ admin: true, administator, shops });
   });
 });
 router.get("/remove-shop/:id", function (req, res) {
   let userId = req.params.id;
   adminHelper.removeShop(userId).then(() => {
-    res.json({message:'shop deleted'});
+    res.json({ message: "shop deleted" });
   });
 });
 router.get("/all-products", verifySignedIn, function (req, res) {
@@ -88,20 +88,21 @@ router.get("/viewService", function (req, res) {
 });
 
 router.post("/signin", function (req, res) {
-  console.log('admin details are',req.body);
-  !req.body.Email || !req.body.password ? res.json({message:'All fields required'}) :
-  adminHelper.doSignin(req.body).then((response) => {
-    if (response.status) {
-      req.session.signedInAdmin = true;
-      req.session.admin = response.admin;
-      // res.redirect("/admin");
-      res.json({message:'succesfully signed ',Signed:true})
-    } else {
-      req.session.signInErr = "Invalid Email/Password";
-      // res.redirect("/admin/signin");
-      res.json({message:'Failed'})
-    }
-  });
+  console.log("admin details are", req.body);
+  !req.body.Email || !req.body.password
+    ? res.json({ message: "All fields required" })
+    : adminHelper.doSignin(req.body).then((response) => {
+        if (response.status) {
+          req.session.signedInAdmin = true;
+          req.session.admin = response.admin;
+          // res.redirect("/admin");
+          res.json({ message: "succesfully signed ", Signed: true });
+        } else {
+          req.session.signInErr = "Invalid Email/Password";
+          // res.redirect("/admin/signin");
+          res.json({ message: "Failed" });
+        }
+      });
 });
 
 router.get("/signout", function (req, res) {
@@ -149,33 +150,33 @@ router.post("/edit-product/:id", verifySignedIn, function (req, res) {
   });
 });
 
-router.post("/delete-product/:id",  function (req, res) {
+router.post("/delete-product/:id", function (req, res) {
   let productId = req.params.id;
-  console.log('proid',productId);
-  
+  console.log("proid", productId);
+
   adminHelper.deleteProduct(productId).then((response) => {
     // fs.unlinkSync("./public/images/product-images/" + productId + ".png");
-    res.json({message:'delete success'});
+    res.json({ message: "delete success" });
   });
 });
 
 router.get("/delete-all-products", function (req, res) {
   adminHelper.deleteAllProducts().then(() => {
-    res.json({msg:"success"});
+    res.json({ msg: "success" });
   });
 });
 
-router.get("/all-users",  function (req, res) {
+router.get("/all-users", function (req, res) {
   let administator = req.session.admin;
   adminHelper.getAllUsers().then((users) => {
-    res.json( { admin: true, administator, users });
+    res.json({ admin: true, administator, users });
   });
 });
 
 router.get("/remove-user/:id", function (req, res) {
   let userId = req.params.id;
   adminHelper.removeUser(userId).then(() => {
-    res.json({message:'user deleted'});
+    res.json({ message: "user deleted" });
   });
 });
 
@@ -185,27 +186,26 @@ router.get("/remove-all-users", verifySignedIn, function (req, res) {
   });
 });
 
-router.get("/all-sellers",  function (req, res) {
-  console.log('all sellers')
+router.get("/all-sellers", function (req, res) {
+  console.log("all sellers");
   // let administator = req.session.admin;
   adminHelper.getAllSellers().then((sellers) => {
-    res.json( { admin: true, sellers });
+    res.json({ admin: true, sellers });
   });
 });
 
 router.get("/remove-seller/:id", function (req, res) {
   let sellerId = req.params.id;
-  adminHelper.removeSeller (sellerId).then(() => {
-    res.json({message:'seller deleted'});
+  adminHelper.removeSeller(sellerId).then(() => {
+    res.json({ message: "seller deleted" });
   });
 });
 router.get("/remove-shop/:id", function (req, res) {
   let sellerId = req.params.id;
-  adminHelper.removeShop (sellerId).then(() => {
-    res.json({message:'seller deleted'});
+  adminHelper.removeShop(sellerId).then(() => {
+    res.json({ message: "seller deleted" });
   });
 });
-
 
 router.get("/remove-all-sellers", verifySignedIn, function (req, res) {
   adminHelper.removeAllSellers().then(() => {
@@ -213,11 +213,10 @@ router.get("/remove-all-sellers", verifySignedIn, function (req, res) {
   });
 });
 
-
 router.get("/all-orders", async function (req, res) {
   let administator = req.session.admin;
   let orders = await adminHelper.getAllOrders();
-  res.json( {
+  res.json({
     admin: true,
     administator,
     orders,
@@ -267,15 +266,36 @@ router.post("/search", verifySignedIn, function (req, res) {
   });
 });
 
-router.post('/addService', function(req,res,next){
-  
+router.post("/addService", function (req, res, next) {
   // console.log(req.body);
-  db.get().collection('service').insertOne(req.body).then((result)=>{
-    console.log(result);
-    res.send("added successfully")
-  })
-})
+  db.get()
+    .collection("service")
+    .insertOne(req.body)
+    .then((result) => {
+      console.log(result);
+      res.send("added successfully");
+    });
+});
 
+router.post("/service/delete", (req, res) => {
+  adminHelper
+    .deleteService(req.body._id)
+    .then(() => res.json({ status: true }))
+    .catch(() => res.json({ status: false }));
+});
 
+router.get("/getService/:id", (req, res) => {
+  const { id } = req.params;
+  adminHelper
+    .getService(id)
+    .then((data) => res.json(data))
+    .catch(() => res.status(500).json());
+});
+router.post("/editService", (req, res) => {
+  adminHelper
+    .editService(req.body)
+    .then((d) => res.json({ status: true }))
+    .catch((e) => res.json({ status: false }));
+});
 
 module.exports = router;
