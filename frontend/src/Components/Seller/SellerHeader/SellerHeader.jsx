@@ -77,9 +77,9 @@ function SellerHeader() {
               <li>
                 <Link to="/seller-shop/:id">Shops</Link>
               </li>
-              {/* <li>
+              <li>
                 <Link to="/seller-orders">Orders</Link>
-              </li> */}
+              </li>
               <li>
                 <Link to='/seller-messages1'>Chat</Link>
               </li>
