@@ -33,7 +33,6 @@ function Shoporders() {
                         <td>{i.orderObject.paymentMethod}</td>
                         <td>{i.orderObject.totalAmount}</td>
 
-                        {/* <td><button onClick={()=>deleteUser(i._id)}  className='btn btn-danger' >Delete</button></td> */}
                     </tr>
                 ))}
             </tbody>
