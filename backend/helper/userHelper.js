@@ -348,12 +348,12 @@ module.exports = {
       let status = order.meth === "COD" ? "placed" : "pending";
       let orderObject = {
         deliveryDetails: {
-          mobile: order.mobile,
-          name:order.name,
-          address: order.address,
-          pincode: order.pincode,
+          mobile: order.order.mobile,
+          name:order.order.name,
+          address: order.order.address,
+          pincode: order.order.pincode,
         },
-        // userId: objectId(userId._Id),
+        // userId: objectId(userId._id),
         // user: user,
         paymentMethod: order.meth,
         products: products,
