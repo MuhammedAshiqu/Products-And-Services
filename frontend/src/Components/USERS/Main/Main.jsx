@@ -38,9 +38,9 @@ function Main() {
     });
   };
   const data=()=>{
-    axios.get("http://localhost:8080/seller",).then((res)=>{
+    axios.get("http://localhost:8080/seller/getShops",).then((res)=>{
       console.log("shop data",res);
-      setstate(res.data.shop)
+      setstate(res.data)
     })
   }
 

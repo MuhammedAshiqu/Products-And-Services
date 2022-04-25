@@ -4,6 +4,7 @@ const db = require("../config/connection");
 const { route } = require("./seller");
 const { response } = require("express");
 const e = require("express");
+const collections = require("../config/collections");
 const objectId = require("mongodb").ObjectID;
 var router = express.Router();
 let nwslr = {};
@@ -175,5 +176,11 @@ router.post("/seller-editprod", verifySignedIn, (req, res) => {
       res.json()
     });
 });
+
+router.get('/getShops',async(req,res)=>{
+const shops =await db.get().collection(collections.SHOPS_COLLECTION).find().toArray()
+res.json(shops)
+})
+
 
 module.exports = router;

@@ -7,6 +7,7 @@ function ShowShops() {
   const [ref, setref] = useState(false);
   const [allshops, setallshops] = useState([]);
   const getAllShops = () => {
+   
     axios.get("http://localhost:8080/admin/all-shops").then((result) => {
       console.log(result);
       setallshops(result.data.shops);
@@ -24,7 +25,7 @@ function ShowShops() {
 
   useEffect(() => {
     getAllShops();
-  }, [ref]);
+  }, []);
   return (
 <div>
     <table className="styled-table">
@@ -37,7 +38,7 @@ function ShowShops() {
           </tr>
         </thead>
         <tbody>
-          {allsellers.map((i, index) => (
+          {allshops.map((i, index) => (
             <tr>
               <td>{index + 1}</td>
               <td>{i.Name}</td>

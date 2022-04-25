@@ -10,18 +10,18 @@ function Change() {
   const [items, setitems] = useState([]);
 
   const getsellerdetails = () => {
-    axios.get("http://localhost:8080/seller/").then((response) => {
+    axios.get("http://localhost:8080/admin/all-shops").then((response) => {
       console.log(response);
-      setitems(response.data.shop);
+      setitems(response.data.shops);
     });
   };
 
   const deleteItem = (id) => {
     alert("deleted");
     axios
-      .post(`http://localhost:8080/seller/delete-product/${id}`)
+      .get(`http://localhost:8080/admin/remove-shop/${id}`)
       .then((res) => {
-        console.log(res);
+        setitems(items.filter(i=>i._id !== id))
         setref(true);
         setref(false);
       });
