@@ -3,9 +3,11 @@ import React, { useEffect, useState } from 'react';
 
 function Shoporders() {
     const [data, setdata] = useState([]);
+    const [user,setUser]=useState(JSON.parse(localStorage.getItem("seller")))
     const getShoporders = () => {
+        console.log(user?._id)
         axios
-            .get('http://localhost:8080/seller/shop-orders')
+            .get('http://localhost:8080/seller/shop-orders/'+user?._id)
             .then((response) => {
                 console.log(response);
                 setdata(response.data.orders);

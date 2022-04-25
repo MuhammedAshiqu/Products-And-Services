@@ -88,10 +88,10 @@ router.get("/addproduct", verifySignedIn, (req, res) => {
 });
 // get all prod and delete
 
-router.get("/shop-orders", function (req, res) {
-  console.log("first");
+router.get("/shop-orders/:id", function (req, res) {
+ const {id}=req.params
   let administator = req.session.seller;
-  sellerHelper.getAllOrders().then((orders) => {
+  sellerHelper.getAllOrders(id).then((orders) => {
     res.json({ seller: true, administator, orders });
   });
 });
@@ -123,11 +123,7 @@ router.delete("/delete-product/:id", function (req, res) {
   });
 });
 
-router.get("/shop-orders", (req, res) => {
-  sellerHelper.getAllOrders().then((response) => {
-    res.json({ response });
-  });
-});
+
 
 router.get("/messages", verifySignedIn, function (req, res, next) {
   console.log("inside");

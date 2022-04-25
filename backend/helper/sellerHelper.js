@@ -201,4 +201,8 @@ module.exports = {
         resolve(response);
     });
   },
+  getAllOrders:(id)=>new Promise(async(resolve,reject)=>{
+    const orders =  await db.get().collection(collections.ORDER_COLLECTION).find({'orderObject.userId':objectId(id)}).toArray()
+    resolve(orders)
+  })
 };
