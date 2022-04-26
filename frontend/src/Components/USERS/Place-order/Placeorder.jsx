@@ -27,6 +27,7 @@ function Placeorder() {
         mobile: '',
         address: '',
     });
+    
     const placeOrder = () => {
         axios
             .get('http://localhost:8080/place-order')
@@ -36,6 +37,7 @@ function Placeorder() {
                 console.log('data', response.data);
             });
     };
+
     const placeOrders = (meth) => {
         axios
             .post('http://localhost:8080/place-order', {
@@ -51,6 +53,7 @@ function Placeorder() {
                 console.log('no', response.data);
             });
     };
+
     const delet = () => {
         axios
             .post('http://localhost:8080/delete')
@@ -59,6 +62,7 @@ function Placeorder() {
                 navigate.push('/order-success');
             });
     };
+
     const handleChange = (e) => {
         setinput({ ...input, [e.target.name]: e.target.value });
     };

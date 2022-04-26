@@ -7,10 +7,10 @@ function Shoporders() {
     const getShoporders = () => {
         console.log(user?._id)
         axios
-            .get('http://localhost:8080/seller/shop-orders/'+user?._id)
+            .get('http://localhost:8080/seller/my-orders/'+user?.Email)
             .then((response) => {
                 console.log(response);
-                setdata(response.data.orders);
+                setdata(response.data);
             });
     };
 
@@ -31,9 +31,9 @@ function Shoporders() {
             <tbody>
                 {data.map((i, index) => (
                     <tr>
-                        <td>{i.orderObject.date}</td>
-                        <td>{i.orderObject.paymentMethod}</td>
-                        <td>{i.orderObject.totalAmount}</td>
+                        <td>{i.orderObject?.date}</td>
+                        <td>{i.orderObject?.paymentMethod}</td>
+                        <td>{i.orderObject?.totalAmount}</td>
 
                     </tr>
                 ))}

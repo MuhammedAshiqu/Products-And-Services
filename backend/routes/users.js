@@ -158,8 +158,9 @@ router.get('/add-to-cart/:id', verifySignedIn, function (req, res) {
             console.log('cart product', response);
             Name = response.Name;
             image = response.url;
+            sellerId = response.CreatedBy;
         });
-    userHelper.addToCart(productId, userId, Name, image).then(() => {
+    userHelper.addToCart(productId, userId, Name, image, sellerId).then(() => {
         res.json({ status: true });
     });
     // res.json({message:productId,user:userId})

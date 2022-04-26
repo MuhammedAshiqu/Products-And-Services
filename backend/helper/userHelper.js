@@ -116,13 +116,14 @@ module.exports = {
   //       });
   //   });
   // },
-  addToCart: (productId, userId, Name, image) => {
+  addToCart: (productId, userId, Name, image, sellerId) => {
     console.log(userId);
     let productObject = {
       item: objectId(productId),
       quantity: 1,
       name: Name,
       ImageUrl: image,
+      sellerId: sellerId,
     };
     return new Promise(async (resolve, reject) => {
       let userCart = await db
