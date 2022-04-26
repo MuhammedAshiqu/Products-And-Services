@@ -49,8 +49,8 @@ function AddShop() {
                 .post('http://localhost:8080/seller/addshop', {
                     input: input,
                     url: url,
-                    sellerId: seller,
-                    createdBy: seller,
+                    sellerId: seller.Email,
+                    createdBy: seller.Email,
                 })
                 .then((res) => {
                     console.log(res);
