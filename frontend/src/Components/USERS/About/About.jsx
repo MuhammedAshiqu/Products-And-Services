@@ -57,7 +57,7 @@ function About() {
 
             setmessage(response.data.message);
 
-            localStorage.setItem('user', vvname);
+            localStorage.setItem('user', JSON.stringify(response.data.session?.user));
             setreload(true);
             setreload(false);
             if (response.data.session?.signedIn) {

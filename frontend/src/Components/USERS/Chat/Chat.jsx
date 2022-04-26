@@ -1,56 +1,66 @@
-import React, { useState, useEffect, useContext } from 'react'
-import './Chat.scss'
-import { useParams } from 'react-router-dom'
-import axios from 'axios';
-import { DataContext } from '../../../Context/Context'
+import React, { useState, useEffect, useContext } from "react";
+import "./Chat.scss";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { DataContext } from "../../../Context/Context";
 function Chat() {
-  const { AdminTrue } = useContext(DataContext)
-  const [adminTrue, setadminTrue] = AdminTrue
-  const [message, setmessage] = useState([])
-  const { id } = useParams()
-  const [chat, setchat] = useState([])
-  const [reply, setreply] = useState([])
-  const [ab, setab] = useState([])
-  const [re, setre] = useState([])
+  const { AdminTrue } = useContext(DataContext);
+  const [adminTrue, setadminTrue] = AdminTrue;
+  const [message, setmessage] = useState([]);
+  const { id } = useParams();
+  const [chat, setchat] = useState([]);
+  const [reply, setreply] = useState([]);
+  const [ab, setab] = useState([]);
+  const [re, setre] = useState([]);
+  const [seller, setSeller] = useState(
+    JSON.parse(localStorage.getItem("seller"))
+  );
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
 
   const getAllChats = async () => {
     console.log(id);
-    await axios.get(`http://localhost:8080/chat/${id}`).then((response) => {
-      console.log('response message', response);
-      setchat(response.data.message);
-    })
-  }
-  const getAllChats1 = async () => {
-    console.log(id);
-    await axios.get(`http://localhost:8080/chat1/${id}`).then((response) => {
-      console.log('reply', response);
-      setreply(response.data.message);
-    })
-  }
+    await axios
+      .get(`http://localhost:8080/chat?id=${id}&&user=${user?user?.Email:seller.Email}`)
+      .then((response) => {
+        console.log("response message", response);
+        setchat(response.data.message);
+        var objDiv = document.getElementById("chat");
+        objDiv.scrollTop = objDiv.scrollHeight;
+            
+      });
+  };
+  // const getAllChats1 = async () => {
+  //   console.log(id);
+  //   await axios.get(`http://localhost:8080/chat1/${id}`).then((response) => {
+  //     console.log("reply", response);
+  //     setreply(response.data.message);
+  //   });
+  // };
   const msg = async () => {
-    await setab(ab => [...chat, ...reply])
+    await setab((ab) => [...chat, ...reply]);
     console.log("jjj", result);
-    setre(result)
-  }
-  console.log(ab)
-  const result = ab.sort((function (a, b) {
-    return (a.time - b.time);
-  }))
+    setre(result);
+  };
+  console.log(ab);
+  const result = ab.sort(function (a, b) {
+    return a.time - b.time;
+  });
   console.log("hai", result);
-  console.log('id', id);
+  console.log("id", id);
   const sendChat = () => {
-    axios.post('http://localhost:8080/chat', { reciever: id, message: message }).then((response) => {
-      alert("Message Sent Successfully");
-      window.location.reload(true);
-    })
-  }
+    axios
+      .post("http://localhost:8080/chat", { reciever: id,sender:user?user?.Email:seller?.Email ,message: message })
+      .then((response) => {
+        alert("Message Sent Successfully");
+        window.location.reload(true);
+      });
+  };
 
   useEffect(() => {
-    setadminTrue(false)
-    getAllChats()
-    getAllChats1()
-    msg()
-  }, [])
+    setadminTrue(false);
+    getAllChats();
+  
+  }, []);
   return (
     <div>
       <div id="container">
@@ -63,44 +73,50 @@ function Chat() {
             <h2></h2>
           </header>
           <ul id="chat">
-            {
-              ab.map((i) => {
-                console.log("msgs")
-                if (i.sender == id) {
-                  return (
-                    <li className="you">
-                      <div className="entete">
-                        {/* <span className="status green" /> */}
-                      </div>
-                      {/* <div className="triangle" /> */}
-                      <div className="message">{i.text}</div><br />
-                      <h2>{i.sender}</h2>
-                    </li>
-                  )
-                }
-                else {
-                  return (
-                    <li className="me">
-                      <div className="entete">
-                        {/* <span className="status blue" /> */}
-                      </div>
-                      {/* <div className="triangle" /> */}
-                      <div className="message">{i.text}</div><br />
-                      <h2>{i.sender}</h2>
-                    </li>
-                  )
-                }
-              })
-            }
+            {chat.map((i,x) => {
+              console.log(i.text);
+             
+                return (
+                  i.sender == id ?
+                  <li className="you" key={x}>
+                    <div className="entete">
+                      {/* <span className="status green" /> */}
+                    </div>
+                    {/* <div className="triangle" /> */}
+                    {/* <div className="message">{i.sender}</div> */}
+                    <h2>{i.text}</h2>
+                    <br />
+                    <h2>{i.sender}</h2>
+                  </li>
+                :
+                   <li className="me" key={x}>
+                    <div className="entete">
+                      {/* <span className="status blue" /> */}
+                    </div>
+                    {/* <div className="triangle" /> */}
+                    // <div className="message">{i.text}</div>
+                    <h2>{i.text}</h2>
+                    <br />
+                    <h2>{i.sender}</h2>
+
+                  </li>
+                );
+              
+            })}
           </ul>
-          <footer><textarea onChange={(e) => setmessage(e.target.value)} placeholder="Type your message" defaultValue={""} />
+          <footer>
+            <textarea
+              onChange={(e) => setmessage(e.target.value)}
+              placeholder="Type your message"
+              defaultValue={""}
+            />
             <button onClick={sendChat}>Send</button>
-            <button onClick={msg}>load</button>
+            <button onClick={getAllChats}>load</button>
           </footer>
         </main>
       </div>
     </div>
-  )
+  );
 }
 
-export default Chat
+export default Chat;

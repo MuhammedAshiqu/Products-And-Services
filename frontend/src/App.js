@@ -100,7 +100,7 @@ function App() {
         <Route path="/productview" component={Productview} />
         <Route path="/seller-products/:email" component={SellerProducts} />
         <Route path="/messages" component={ChatTable} />
-        <Route path="/seller-messages1" component={ChatTable1} />
+        <Route path="/seller-messages1" component={ChatTable} />
         <Route path="/shopview" component={ShopView}/>
         {/* <Route path="/manageproduct" component={ManageProduct} /> */}
         {/* <Route path="/editproduct/:id" component={NewAdd1} /> */}

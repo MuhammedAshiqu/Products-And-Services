@@ -581,10 +581,10 @@ module.exports = {
       resolve(wishlist);
     });
   },
-  sendChat: (user, items) => {
+  sendChat: (items) => {
     return new Promise(async (resolve, reject) => {
       const data = {
-        sender: user.Email,
+        sender: items.sender,
         reciever: items.reciever,
         text: items.message,
         isReaded: true,
@@ -600,14 +600,21 @@ module.exports = {
     });
   },
   getall: (user, id) => {
-    console.log("reciever is ", user.Email);
+    console.log("reciever is ", user);
     console.log("id", id);
     return new Promise(async (resolve, reject) => {
-      const messages = await db
+      let messages = await db
         .get()
         .collection("chat")
-        .find({ reciever: user.Email, sender: id })
+        .find({ reciever: user, sender: id })
         .toArray();
+        const messages1 =await db
+        .get()
+        .collection("chat")
+        .find({ reciever:id , sender: user })
+        .toArray();
+
+        messages= messages.concat(messages1)
       console.log("messages are", messages);
       // const messages = await db.get().collection('chat').find().toArray();
       // const aar = [];
@@ -621,7 +628,7 @@ module.exports = {
       //   aar.push(i);
       // })
       // resolve(aar)
-      resolve(messages);
+      resolve(messages.sort((a, b) => a._id > b._id ? 1 : -1));
     });
   },
 
@@ -655,7 +662,7 @@ module.exports = {
       const msg = await db
         .get()
         .collection("chat")
-        .find({ reciever: user.Email })
+        .find({ reciever: user })
         .toArray();
       console.log("sent are", msg);
       resolve(msg);

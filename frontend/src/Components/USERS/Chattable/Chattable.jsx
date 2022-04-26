@@ -8,9 +8,14 @@ function ChatTable() {
   const [adminTrue, setadminTrue] = AdminTrue
   const [arr, setarr] = useState([]);
   const [send, setsend] = useState([])
+  const [seller, setSeller] = useState(
+    JSON.parse(localStorage.getItem("seller"))
+  );
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
+
   const getMessages = () => {
 
-    axios.get(`http://localhost:8080/messages`).then((result) => {
+    axios.get(`http://localhost:8080/messages/${user?user.Email:seller.Email}`).then((result) => {
       console.log(result.data)
       setarr(result.data)
 

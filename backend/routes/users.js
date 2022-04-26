@@ -314,10 +314,11 @@ router.get('/wishlist', (req, res) => {
 // })
 
 // })
-router.get('/chat/:id', verifySignedIn, (req, res) => {
-    const expected = req.params.id;
-    const user = nw;
-    userHelper.getall(user, expected).then((response) => {
+router.get('/chat', verifySignedIn, (req, res) => {
+    const {id,user}=req.query
+    // const expected = req.params.id;
+    // const user = nw;
+    userHelper.getall(user, id).then((response) => {
         res.json({ message: response });
     });
 });
@@ -331,13 +332,13 @@ router.get('/chat1/:id', verifySignedIn, (req, res) => {
     });
 });
 router.post('/chat', verifySignedIn, async (req, res) => {
-    const user = nw;
+    
     console.log(req.body);
 
     // const isReaded=await userHelper.getIsReaded()
     // console.log('isReaded'+isReaded.length);
     //  let allMessages = await db.get().collection('chat').find({reciever:user.Email,sender:'abhinchand@gmail.com'}).toArray();
-    userHelper.sendChat(user, req.body).then((result) => {
+    userHelper.sendChat( req.body).then((result) => {
         res.json({ message: result });
     });
 });
@@ -400,8 +401,8 @@ router.post('/delete', verifySignedIn, function (req, res, next) {
     });
 });
 
-router.get('/messages', verifySignedIn, function (req, res, next) {
-    let user = nw;
+router.get('/messages/:id', verifySignedIn, function (req, res, next) {
+    let user = req.params.id;
     console.log('new', nw);
     userHelper.getmessages(user).then((msg) => {
         console.log('imad', msg);
